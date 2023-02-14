@@ -1,0 +1,23 @@
+---
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import { Content } from "../../markdown/national-coding-day/lodash-problem.md";
+---
+
+<style is:global>
+    pre {
+      background: #151718;
+      font-size: xx-large;
+      border-radius: 10px;
+      padding: 40px;
+    }
+    pre > code {
+      display: grid;
+      row-gap: 10px;
+    }
+  </style>
+
+<NationalCodingDayLayout page={4} title="CJS based package" subTitle="Lodash">
+  <div class="flex flex-col w-full h-full justify-center items-center">
+        <Content />
+  </div>
+</NationalCodingDayLayout>
