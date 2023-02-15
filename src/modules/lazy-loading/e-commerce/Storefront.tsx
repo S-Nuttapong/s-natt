@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { Globe } from "../../bloat-components";
 
 type Props = {
   onClick: () => void;
@@ -69,7 +70,9 @@ export const Storefront = () => {
 
   return (
     <div className="bg-transparent w-full h-full border-2 border-gray-100 xxl:px-20 lg:px-10 xxl:py-10 lg:py-5 relative overflow-y-hidden">
-      <Drawer isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
+        <Globe />
+      </Drawer>
       <div className="w-full flex justify-end text-gray-100">
         <CartIcon onClick={open} />
       </div>
