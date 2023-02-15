@@ -7,9 +7,15 @@ interface Props {
   subTitle?: string;
 }
 
+/**
+ * fix Netlify relative path navigation issue
+ */
+const addBasedPath = (lastSegment: string) =>
+  `/national-coding-day/${lastSegment}`;
+
 const { page, title = "", subTitle = "" } = Astro.props;
-const next = `${page + 1}`;
-const prev = page === 1 ? "" : `${page - 1}`;
+const next = addBasedPath(`${page + 1}`);
+const prev = addBasedPath(page === 1 ? "" : `${page - 1}`);
 ---
 
 <html lang="en">
@@ -23,7 +29,11 @@ const prev = page === 1 ? "" : `${page - 1}`;
     >
       <div>
         {title && <h1 class="text-9xl text-white">{title}</h1>}
-        {subTitle && (<h1 class="w-full text-6xl text-white text-left">{subTitle}</h1>)}
+        {
+          subTitle && (
+            <h1 class="w-full text-6xl text-white text-left">{subTitle}</h1>
+          )
+        }
       </div>
       <slot />
       <div class="flex justify-center">
