@@ -1,28 +1,35 @@
 ---
+import lodashSolutionSrc from "../../assets/lodash-solution.webp";
+import AstroImage from "../../components/AstroImage.astro";
 import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
 import { Content as LodashDirectImport } from "../../markdown/national-coding-day/lodash-solution-direct.md";
 import { Content as LodasESM } from "../../markdown/national-coding-day/lodash-solution-esm.md";
 ---
 
 <style is:global>
-    pre {
-      background: #151718;
-      font-size: x-large;
-      border-radius: 10px;
-      padding: 40px;
-    }
-    pre > code {
-      display: grid;
-      row-gap: 10px;
-    }
-  </style>
+  pre {
+    background: #151718;
+    font-size: x-large;
+    border-radius: 10px;
+    padding: 40px;
+  }
+  pre > code {
+    display: grid;
+    row-gap: 10px;
+  }
+</style>
 
 <NationalCodingDayLayout page={5} title="CJS based package" subTitle="Lodash">
-  <div class="flex w-full h-full justify-between">
-        <div class="grid grid-rows-2 gap-4 w-fit p-12">
-          <div><LodashDirectImport/></div>
-          <div><LodasESM/></div>
-        </div>
-        <div class="text-white">for image</div>
+  <div class="flex w-full h-full justify-between items-center">
+    <div class="grid grid-rows-2 gap-4 w-fit p-12">
+      <div><LodashDirectImport /></div>
+      <div><LodasESM /></div>
+    </div>
+    <AstroImage
+      src={lodashSolutionSrc}
+      width={1000}
+      height={532}
+      alt="lodash-solution"
+    />
   </div>
 </NationalCodingDayLayout>

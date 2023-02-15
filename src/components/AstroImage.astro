@@ -1,0 +1,12 @@
+---
+import type {
+ImageComponentLocalImageProps,
+ImageComponentRemoteImageProps
+} from "@astrojs/image/components";
+import { Image } from "@astrojs/image/components";
+
+type Props = ImageComponentLocalImageProps | ImageComponentRemoteImageProps;
+
+---
+
+<Image {...Astro.props as any} />

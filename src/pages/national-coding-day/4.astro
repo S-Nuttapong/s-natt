@@ -1,6 +1,10 @@
 ---
+
+import lodashProblemSrc from "../../assets/lodash-problem.webp";
+import AstroImage from "../../components/AstroImage.astro";
 import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
 import { Content } from "../../markdown/national-coding-day/lodash-problem.md";
+
 ---
 
 <style is:global>
@@ -17,7 +21,8 @@ import { Content } from "../../markdown/national-coding-day/lodash-problem.md";
   </style>
 
 <NationalCodingDayLayout page={4} title="CJS based package" subTitle="Lodash">
-  <div class="flex flex-col w-full h-full justify-center items-center">
+  <div class="flex w-full h-full justify-between items-center">
         <Content />
+        <AstroImage src={lodashProblemSrc} width={1000} height={540} alt="lodash-problem"/>
   </div>
 </NationalCodingDayLayout>

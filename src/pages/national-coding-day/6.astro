@@ -1,0 +1,14 @@
+---
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import { NPMTrend } from "../../modules/npm-trends";
+---
+
+<NationalCodingDayLayout
+  page={6}
+  title="Bloated 3rd party"
+  subTitle="Moment.js"
+>
+  <div class="flex w-full h-full justify-center items-center">
+    <NPMTrend client:only />
+  </div>
+</NationalCodingDayLayout>
