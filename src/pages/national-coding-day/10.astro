@@ -1,0 +1,16 @@
+---
+import AstroImage from "../../components/AstroImage.astro";
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import momentJSAlternativeSrc from "../../assets/moment-js-alternative.webp";
+import { Storefront } from "../../modules/lazy-loading/e-commerce/Storefront";
+---
+
+<NationalCodingDayLayout
+  page={9}
+  title="Lazy Loading"
+  subTitle="Bloat components"
+>
+  <div class="flex w-full h-full justify-center items-center px-10 py-5 overflow-hidden">
+    <Storefront client:only/>
+  </div>
+</NationalCodingDayLayout>

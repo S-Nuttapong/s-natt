@@ -10,7 +10,6 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { enUS } from "date-fns/locale";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import {
@@ -20,7 +19,6 @@ import {
   MOMENT_JS_TRENDS,
 } from "./constants";
 import { groupDownloadsByPeriod } from "./utils/groupDates";
-import { format } from "date-fns";
 
 const colors = ["#3e95cd", "#8e5ea2", "#3cba9f", "#c45850"];
 
