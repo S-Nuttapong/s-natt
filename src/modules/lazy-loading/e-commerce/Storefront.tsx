@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Globe } from "../../bloat-components";
+import { Globe } from "../../bloated-components";
 
 type Props = {
   onClick: () => void;
