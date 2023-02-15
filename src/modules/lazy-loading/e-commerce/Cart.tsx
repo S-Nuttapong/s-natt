@@ -1,26 +1,22 @@
-import { useState, useCallback } from "react";
-import { Globe } from "../../bloated-components";
+import type { ReactNode } from "react";
 import { CartIcon } from "./CartIcon";
 import { Drawer } from "./Drawer";
 
 export type Props = {
-  children?: JSX.Element;
+  children?: ReactNode;
+  onClick: () => void;
+  onClose: () => void;
+  isOpen: boolean;
 };
 
-export const Cart = ({ children }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const open = useCallback(() => {
-    setIsOpen(true);
-  }, []);
-
+export const Cart = ({ children, isOpen, onClick, onClose }: Props) => {
   return (
     <>
-      <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Drawer isOpen={isOpen} onClose={onClose}>
         {children}
       </Drawer>
       <div className="w-full flex justify-end text-gray-100">
-        <CartIcon onClick={open} />
+        <CartIcon onClick={onClick} />
       </div>
     </>
   );
