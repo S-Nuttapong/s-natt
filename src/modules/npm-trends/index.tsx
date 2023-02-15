@@ -1,3 +1,4 @@
+import "chartjs-adapter-date-fns";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -5,51 +6,54 @@ import {
   LinearScale,
   LineElement,
   PointElement,
+  TimeScale,
   Title,
-  Tooltip
+  Tooltip,
 } from "chart.js";
+import { enUS } from "date-fns/locale";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import {
+  DATE_FNS_TREND,
+  DAY_JS_TREND,
+  LUXON_TRENDS,
+  MOMENT_JS_TRENDS,
+} from "./constants";
+import { groupDownloadsByPeriod } from "./utils/groupDates";
 
-const data = {
-  labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
-  datasets: [
-    {
-      data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
-      label: "Africa",
-      borderColor: "#3e95cd",
-      backgroundColor: "#3e95cd",
-    },
-    {
-      data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
-      label: "Asia",
-      borderColor: "#8e5ea2",
-      backgroundColor: "#8e5ea2",
-    },
-    {
-      data: [168, 170, 178, 190, 203, 276, 408, 547, 675, 734],
-      label: "Europe",
-      borderColor: "#3cba9f",
-      backgroundColor: "#3cba9f",
-    },
-    {
-      data: [40, 20, 10, 16, 24, 38, 74, 167, 508, 784],
-      label: "Latin America",
-      borderColor: "#e8c3b9",
-      backgroundColor: "#e8c3b9",
-    },
-    {
-      data: [6, 3, 2, 2, 7, 26, 82, 172, 312, 433],
-      label: "North America",
-      borderColor: "#c45850",
-      backgroundColor: "#c45850",
-    },
-  ],
-};
+const colors = ["#3e95cd", "#8e5ea2", "#3cba9f", "#c45850"];
+
+const stats = [MOMENT_JS_TRENDS, DATE_FNS_TREND, DAY_JS_TREND, LUXON_TRENDS];
+
+const labels = groupDownloadsByPeriod(stats[0].downloads, "week").map(
+  (periodData) => periodData.period
+);
+
+const datasets = stats.map((stat, idx) => {
+  const color = colors[idx];
+  const data = groupDownloadsByPeriod(stat.downloads, "week").map(
+    (periodData) => periodData.downloads
+  );
+  const dataset = {
+    label: stat.package,
+    backgroundColor: color,
+    borderColor: color,
+    pointRadius: 4,
+    pointHoverRadius: 4,
+    pointBorderWidth: 1,
+    pointBackgroundColor: "transparent",
+    pointBorderColor: "transparent",
+    pointHoverBackgroundColor: color,
+    pointHoverBorderColor: "#ffffff",
+    fill: false,
+    data,
+  };
+
+  return dataset;
+});
 
 export const NPMTrend = () => {
   const [isRegistered, setIsRegistered] = useState(false);
-
   useEffect(() => {
     ChartJS.register(
       LineElement,
@@ -58,7 +62,8 @@ export const NPMTrend = () => {
       Title,
       CategoryScale,
       Tooltip,
-      Legend
+      Legend,
+      TimeScale
     );
     setIsRegistered(true);
   }, []);
@@ -67,12 +72,18 @@ export const NPMTrend = () => {
 
   return (
     <Line
-      onLoad={() => console.log("loaded")}
-      data={data}
+      data={{ datasets, labels }}
       options={{
         responsive: false,
         scales: {
           x: {
+            type: "time",
+            time: {
+              unit: "quarter",
+              displayFormats: {
+                quarter: "MMM yyyy",
+              },
+            },
             ticks: {
               color: "white",
               font: {
@@ -89,6 +100,10 @@ export const NPMTrend = () => {
             },
           },
         },
+        interaction: {
+          intersect: false,
+          mode: "index",
+        },
         plugins: {
           legend: {
             position: "top",
@@ -102,6 +117,11 @@ export const NPMTrend = () => {
           },
           tooltip: {
             padding: 20,
+            intersect: false,
+            displayColors: true,
+            multiKeyBackground: "transparent",
+            titleMarginBottom: 10,
+            bodySpacing: 10,
             titleFont: {
               size: 20,
             },
