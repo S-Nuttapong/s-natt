@@ -20,6 +20,7 @@ import {
   MOMENT_JS_TRENDS,
 } from "./constants";
 import { groupDownloadsByPeriod } from "./utils/groupDates";
+import { format } from "date-fns";
 
 const colors = ["#3e95cd", "#8e5ea2", "#3cba9f", "#c45850"];
 
@@ -116,10 +117,24 @@ export const NPMTrend = () => {
             },
           },
           tooltip: {
+            usePointStyle: true,
+            callbacks: {
+              labelColor: (ctx) => ({
+                borderColor: colors[ctx.datasetIndex],
+                backgroundColor: colors[ctx.datasetIndex],
+                borderWidth: 2,
+                borderDash: [2, 2],
+                borderRadius: 2,
+              }),
+              labelPointStyle: () => ({
+                pointStyle: "rect",
+                rotation: 0,
+              }),
+              label: (ctx) => ctx.formattedValue,
+              title: ([ctx]) => ctx.label.split(", ").slice(0, -1).join(", "),
+            },
             padding: 20,
-            intersect: false,
             displayColors: true,
-            multiKeyBackground: "transparent",
             titleMarginBottom: 10,
             bodySpacing: 10,
             titleFont: {
