@@ -37,8 +37,10 @@ const LazyCart = () => {
 };
 
 export const LazyStorefront = () => {
-  <StorefrontTemplate
-    cart={<LazyCart />}
-    productCardList={<ProductCardsList />}
-  />;
+  return (
+    <StorefrontTemplate
+      cart={<LazyCart />}
+      productCardList={<ProductCardsList />}
+    />
+  );
 };
