@@ -38,18 +38,18 @@ const prev = addBasedPath(page === 1 ? "" : `${page - 1}`);
       <slot />
       <div class="flex justify-center">
         <div class="flex gap-2">
-          <a href={prev} class="text-white"
-            ><Icon
+          <a href={prev} class="text-white">
+            <Icon
               name="charm:chevron-left"
               class="text-gray-500 fill-current w-20 hover:text-gray-50"
-            /></a
-          >
-          <a href={next} class="text-white"
-            ><Icon
+            />
+          </a>
+          <a href={next} class="text-white">
+            <Icon
               name="charm:chevron-right"
               class="text-gray-500 fill-current w-20 hover:text-gray-50"
-            /></a
-          >
+            />
+          </a>
         </div>
       </div>
     </div>

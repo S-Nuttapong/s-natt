@@ -2,7 +2,18 @@
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			screens: {
+				xxl: '1700px',
+			},
+			height: {
+				'100': '26rem',
+				'110': '28rem'
+			},
+			gridTemplateColumns: {
+				'auto-fit': 'repeat( auto-fit, minmax(250px, 1fr) );'
+			}
+		},
 	},
 	plugins: [],
 }
