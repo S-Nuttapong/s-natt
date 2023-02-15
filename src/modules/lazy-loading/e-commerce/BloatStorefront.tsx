@@ -11,7 +11,7 @@ export const BloatedCart = () => {
 
   return (
     <Cart onClick={open} onClose={close} isOpen={isOpen}>
-      <div className="text-white text-center">I am expensive!!!</div>;
+      <div className="text-white text-center align-middle">I am expensive!!!</div>;
     </Cart>
   );
 };
