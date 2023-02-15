@@ -1,0 +1,15 @@
+---
+import AstroImage from "../../components/AstroImage.astro";
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import momentJSAlternativeSrc from "../../assets/moment-js-alternative.webp";
+---
+
+<NationalCodingDayLayout
+  page={9}
+  title="Lazy Loading"
+  subTitle="Bloat components"
+>
+  <div class="flex w-full h-full justify-center items-center">
+    <AstroImage src={momentJSAlternativeSrc} width={1800} height={500} alt="Moment.js Bundle Phobia"/>
+  </div>
+</NationalCodingDayLayout>
