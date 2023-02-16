@@ -1,6 +1,6 @@
 ---
-import { Image } from "@astrojs/image/components";
 import imageSrc from "../../assets/current-ui-lib-state.png";
+import AstroImage from "../../components/AstroImage.astro";
 import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
 ---
 
@@ -10,6 +10,6 @@ import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.as
   subTitle="Current Gold Standard"
 >
   <div class="flex w-full justify-center">
-    <Image src={imageSrc} width={716} height={483} alt="logo" />
+    <AstroImage src={imageSrc} width={716} height={483} alt="logo" />
   </div>
 </NationalCodingDayLayout>

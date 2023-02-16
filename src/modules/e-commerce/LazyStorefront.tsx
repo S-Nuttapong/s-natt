@@ -4,12 +4,9 @@ import { ProductCardsList } from "./ProductCardsList";
 import { StorefrontTemplate } from "./StorefrontTemplate";
 import { useDisclosure } from "./useDisclosure";
 
-const LazyBloatedComp = lazy(async () => {
-  const BloatedComponents = await import(
-    "../../bloated-components/globe/index"
-  );
-  return BloatedComponents;
-});
+const LazyBloatedComp = lazy(
+  async () => await import("../bloated-component/index")
+);
 
 const LazyCart = () => {
   const { isOpen, open, close } = useDisclosure();
@@ -26,11 +23,7 @@ const LazyCart = () => {
       <Suspense
         fallback={<div className="text-white text-center">Loading...</div>}
       >
-        {isLoadModule ? (
-          <div className="text-white text-center">
-            <LazyBloatedComp />
-          </div>
-        ) : null}
+        {isLoadModule && <LazyBloatedComp />}
       </Suspense>
     </Cart>
   );

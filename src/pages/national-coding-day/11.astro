@@ -3,7 +3,6 @@ import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.as
 import Globe from "../../modules/bloated-component";
 import { MiniCart } from "../../modules/e-commerce/MiniCart";
 import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
-
 ---
 
 <NationalCodingDayLayout
@@ -18,12 +17,15 @@ import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
       class="bg-transparent w-full h-full border-2 border-gray-100 xxl:px-20 lg:px-10 xxl:py-10 lg:py-5 relative overflow-y-hidden"
     >
       <MiniCart client:load>
-        <Globe client:visible />
+        <div></div>
       </MiniCart>
-      <div
-        class="flex w-full h-full justify-center items-center overflow-scroll xxl:py-20 sm:py-10"
-      >
-        <ProductCardsList />
+      <div class="w-full h-full overflow-scroll">
+        <div
+          class="flex w-full h-full justify-center items-center xxl:py-20 sm:py-10"
+        >
+          <ProductCardsList />
+        </div>
+        <Globe client:visible />
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 //@ts-nocheck
+import { geoOrthographic, geoPath } from 'd3-geo'
+import { clamp, isEmpty, map } from 'lodash'
 import * as React from 'react'
-import {useSpring, animated} from 'react-spring'
-import {useWheel} from 'react-use-gesture'
-import {geoOrthographic, geoPath} from 'd3-geo'
-import {feature} from 'topojson-client'
+import { animated, useSpring } from 'react-spring'
+import { useWheel } from 'react-use-gesture'
+import { feature } from 'topojson-client'
 import jsonData from './countries-110m.json'
-import {map, clamp, isEmpty} from 'lodash'
 import './globe.css'
 
 const Countries = feature(jsonData, jsonData.objects.countries).features
@@ -137,7 +137,7 @@ function GlobeContainer({size = 400}) {
           wheeling,
         })
       } else {
-        setZoom({
+      setZoom({
           ...zoom,
           wheeling,
         })

@@ -1,7 +1,7 @@
+import Globe from "../bloated-component";
+import { Cart } from "./Cart";
 import { ProductCardsList } from "./ProductCardsList";
 import { StorefrontTemplate } from "./StorefrontTemplate";
-import { Globe } from "../../bloated-components";
-import { Cart } from "./Cart";
 import { useDisclosure } from "./useDisclosure";
 
 export const BloatedCart = () => {
@@ -11,7 +11,10 @@ export const BloatedCart = () => {
 
   return (
     <Cart onClick={open} onClose={close} isOpen={isOpen}>
-      <div className="text-white text-center align-middle">I am expensive!!!</div>;
+      <div className="text-white text-center align-middle">
+        I am expensive!!!
+      </div>
+      ;
     </Cart>
   );
 };
