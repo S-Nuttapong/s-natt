@@ -1,39 +1,40 @@
-//@ts-nocheck
-import { geoOrthographic, geoPath } from 'd3-geo'
-import { clamp, isEmpty, map } from 'lodash'
-import * as React from 'react'
-import { animated, useSpring } from 'react-spring'
-import { useWheel } from 'react-use-gesture'
-import { feature } from 'topojson-client'
-import jsonData from './countries-110m.json'
-import './globe.css'
+import { geoOrthographic, geoPath } from "d3-geo";
+import _ from "lodash";
+import * as React from "react";
+import { animated, useSpring } from "react-spring";
+import { useWheel } from "react-use-gesture";
+import { feature } from "topojson-client";
+import jsonData from "./countries-110m.json";
+import "./globe.css";
 
-const Countries = feature(jsonData, jsonData.objects.countries).features
+//@ts-ignore
+const Countries = feature(jsonData, jsonData.objects.countries).features;
 
 const Globe = animated(
-  ({lat = 0, lng = 0, zoom, size = 400, onGlobeClick, currentLocation}) => {
-    const svgref = React.useRef()
+  ({ lat = 0, lng = 0, zoom, size = 400, onGlobeClick, currentLocation }) => {
+    const svgref = React.useRef();
     const projection = React.useMemo(() => {
       return geoOrthographic()
         .translate([size / 2, size / 2])
         .scale((size / 2) * zoom)
         .clipAngle(90)
-        .rotate([-lat, -lng])
-    }, [size, lat, lng, zoom])
+        .rotate([-lat, -lng]);
+    }, [size, lat, lng, zoom]);
 
-    const pathgen = geoPath(projection)
+    const pathgen = geoPath(projection);
     const currentCoordinates = [
       currentLocation.userLng,
       currentLocation.userLat,
-    ]
-    const pinSize = size / 60 / zoom
+    ];
+    const pinSize = size / 60 / zoom;
     // Check if it's behind the globe
     const isPinVisible = pathgen({
-      type: 'Point',
+      type: "Point",
       coordinates: [currentCoordinates[0], currentCoordinates[1]],
-    })
+    });
 
     return (
+      //@ts-ignore
       <svg ref={svgref} width={size} height={size} title="globe">
         <defs>
           <radialGradient
@@ -44,10 +45,13 @@ const Globe = animated(
             fx="50%"
             fy="50%"
           >
-            <stop offset="0%" style={{stopColor: '#325181', stopOpacity: 1}} />
+            <stop
+              offset="0%"
+              style={{ stopColor: "#325181", stopOpacity: 1 }}
+            />
             <stop
               offset="100%"
-              style={{stopColor: '#293E5F', stopOpacity: 1}}
+              style={{ stopColor: "#293E5F", stopOpacity: 1 }}
             />
           </radialGradient>
         </defs>
@@ -56,18 +60,21 @@ const Globe = animated(
           cx={size / 2}
           cy={size / 2}
           r={(size / 2) * zoom}
-          onClick={e => {
-            let rect = svgref.current.getBoundingClientRect()
+          onClick={(e) => {
+            //@ts-ignore
+            let rect = svgref.current.getBoundingClientRect();
+            //@ts-ignore
             const [lat, lng] = projection.invert([
               e.pageX - rect.left,
               e.pageY - rect.top,
-            ])
-            onGlobeClick.call(null, lat, lng)
+            ]);
+            onGlobeClick.call(null, lat, lng);
           }}
-          style={{cursor: 'pointer'}}
+          style={{ cursor: "pointer" }}
         />
-        <g style={{pointerEvents: 'none'}}>
-          {map(Countries, (d, i) => (
+        <g style={{ pointerEvents: "none" }}>
+          //@ts-ignore
+          {_.map(Countries, (d, i) => (
             <path
               fill="#63A2FF"
               stroke="#5891E5"
@@ -77,92 +84,96 @@ const Globe = animated(
           ))}
         </g>
         {currentLocation.userLat &&
-          !isEmpty(isPinVisible) &&
-          [0, 1].map(pin => (
+          !_.isEmpty(isPinVisible) &&
+          [0, 1].map((pin) => (
             <circle
               key={pin}
               className={`pin-${pin}`}
+              //@ts-ignore
               cx={projection(currentCoordinates)[0]}
+              //@ts-ignore
               cy={projection(currentCoordinates)[1]}
               r={pinSize >= 15 ? 5 : size / 60 / zoom}
               fill="#fff"
             />
           ))}
       </svg>
-    )
-  },
-)
+    );
+  }
+);
 
-function GlobeContainer({size = 400}) {
+function GlobeContainer({ size = 400 }) {
   const [state, setState] = React.useState({
     lat: 0,
     lng: 0,
     userLat: 0,
     userLng: 0,
-  })
+  });
 
   React.useEffect(() => {
-    navigator.geolocation.getCurrentPosition(position =>
+    navigator.geolocation.getCurrentPosition((position) =>
       setState({
         userLng: position.coords.longitude,
         userLat: position.coords.latitude,
         lat: position.coords.longitude,
         lng: position.coords.latitude,
-      }),
-    )
-  }, [setState])
+      })
+    );
+  }, [setState]);
 
   // Panning
-  const {lat, lng} = useSpring({
+  const { lat, lng } = useSpring({
     lat: state.lat,
     lng: state.lng,
-  })
+  });
 
   // Zooming (use cmd/ctrl + scroll to zoom)
   const [zoom, setZoom] = React.useState({
     wheeling: false,
     scale: 1,
-  })
+  });
 
-  const canvasRef = React.useRef()
+  const canvasRef = React.useRef();
 
   const bind = useWheel(
-    ({wheeling, metaKey, delta: [deltaX, deltaY], event}) => {
+    ({ wheeling, metaKey, delta: [deltaX, deltaY], event }) => {
       if (metaKey && event) {
-        const newScale = clamp(zoom.scale + deltaY / 600, 0.2, 10)
+        const newScale = _.clamp(zoom.scale + deltaY / 600, 0.2, 10);
 
         setZoom({
           ...zoom,
           scale: newScale,
           wheeling,
-        })
+        });
       } else {
-      setZoom({
+        setZoom({
           ...zoom,
           wheeling,
-        })
+        });
       }
-    },
-  )
+    }
+  );
 
   return (
+    //@ts-ignore
     <div {...bind()} ref={canvasRef}>
       <Globe
         lat={lat}
         lng={lng}
         zoom={zoom.scale}
-        currentLocation={{userLat: state.userLat, userLng: state.userLng}}
+        currentLocation={{ userLat: state.userLat, userLng: state.userLng }}
         size={size}
+        //@ts-ignore
         onGlobeClick={(lat, lng) => {
           setState({
             ...state,
             lat,
             lng,
-          })
+          });
         }}
       />
     </div>
-  )
+  );
 }
 
-export default GlobeContainer
+export default GlobeContainer;

@@ -1,5 +1,3 @@
-import analyze from 'rollup-plugin-analyzer'
-
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
@@ -26,33 +24,4 @@ export default defineConfig({
       wrap: true,
     },
   },
-  vite: {
-    build: {
-      build: {
-        rollupOptions: {
-          plugins: [analyze({
-            skipFormatted: true,
-            onAnalysis({
-              bundleSize,
-              bundleOrigSize,
-              bundleReduction,
-              moduleCount
-            }) {
-              console.info('Does it work ?')
-              if (!commandOptions.silent) {
-                console.info(
-                  `Bundle size: ${Math.round((bundleSize / 1000000) * 100) / 100}Mb`
-                );
-                console.info(
-                  `Original size: ${Math.round((bundleOrigSize / 1000000) * 100) /
-                  100}Mb`
-                );
-                console.info(`Reduction: ${bundleReduction}%`)
-              }
-            }
-          })]
-        },
-      },
-    }
-  }
 });
