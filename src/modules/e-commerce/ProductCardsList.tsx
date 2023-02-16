@@ -1,10 +1,11 @@
 import { ProductCard } from "./ProductCard";
 
-export const ProductCardsList = () => (
+type Props = {
+  row?: number;
+};
+
+export const ProductCardsList = ({ row = 1 }: Props) => (
   <div className="w-full h-full grid grid-cols-auto-fit gap-6 items-center overflow-y-auto">
-    <ProductCard />
-    <ProductCard />
-    <ProductCard />
-    <ProductCard />
+    {Array(row * 4).fill(null).map(ProductCard)}
   </div>
 );

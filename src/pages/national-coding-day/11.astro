@@ -6,7 +6,7 @@ import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
 ---
 
 <NationalCodingDayLayout
-  page={10}
+  page={11}
   title="Lazy Loading"
   subTitle="Bloat components"
 >
@@ -23,7 +23,7 @@ import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
         <div
           class="flex w-full h-full justify-center items-center xxl:py-20 sm:py-10"
         >
-          <ProductCardsList />
+          <ProductCardsList row={2} />
         </div>
         <Globe client:visible />
       </div>
