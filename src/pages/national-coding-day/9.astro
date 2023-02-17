@@ -1,6 +1,9 @@
 ---
 import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
-import { BloatedStorefront } from "../../modules/e-commerce/BloatedStorefront";
+import Globe from "../../modules/bloated-components/bloated-component";
+import { MiniCart } from "../../modules/e-commerce/MiniCart";
+import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
+
 ---
 
 <NationalCodingDayLayout
@@ -11,6 +14,17 @@ import { BloatedStorefront } from "../../modules/e-commerce/BloatedStorefront";
   <div
     class="flex w-full h-full justify-center items-center px-10 py-5 overflow-hidden"
   >
-    <BloatedStorefront client:only />
+    <div
+      class="bg-transparent w-full h-full border-2 border-gray-100 xxl:px-20 lg:px-10 xxl:py-10 lg:py-5 relative overflow-y-hidden"
+    >
+      <MiniCart client:load>
+        <Globe client:load />
+      </MiniCart>
+      <div
+        class="flex w-full h-full justify-center items-center overflow-scroll xxl:py-20 sm:py-10"
+      >
+        <ProductCardsList />
+      </div>
+    </div>
   </div>
 </NationalCodingDayLayout>
