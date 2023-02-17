@@ -1,11 +1,10 @@
 ---
-import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro"
-
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
 ---
 
-<NationalCodingDayLayout page={1}>
-  <div class="flex flex-col w-full h-full justify-center items-center">
-    <h1 class="text-9xl text-white break-words">Web performance in UI framework era</h1>
-    <h1 class="w-full text-6xl text-white text-left">Building without bloat</h1>
-  </div>
-</NationalCodingDayLayout>
+<NationalCodingDayLayout
+  page={1}
+  type="header"
+  title="Web performance in UI framework era"
+  subTitle="Building without bloat"
+/>
