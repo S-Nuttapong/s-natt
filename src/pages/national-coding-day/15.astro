@@ -1,0 +1,35 @@
+---
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import { Content } from "../../markdown/national-coding-day/design-system-nx-config.md";
+---
+
+<style is:global>
+  pre {
+    background: #151718;
+    font-size: xx-large;
+    border-radius: 10px;
+    padding: 40px;
+  }
+  pre > code {
+    display: grid;
+    row-gap: 10px;
+  }
+</style>
+
+<NationalCodingDayLayout
+  page={15}
+  title="Tree-shakeable Internal Libs"
+  subTitle="Design system"
+>
+  <div class="flex w-full h-full justify-between items-center">
+    <ul class="text-white text-6xl flex flex-col justify-start align-top gap-6 list-disc list-inside">
+      <li class="text-inherit">ESM export</li> 
+      <li class="text-inherit">Modularized export</li>
+      <li class="text-inherit">Configurations</li>
+    </ul>
+    <div class="flex flex-col gap-6">
+      <h2 class="text-white text-4xl">Nx config example:</h2>
+      <Content />
+    </div>
+  </div>
+</NationalCodingDayLayout>

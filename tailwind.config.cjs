@@ -8,10 +8,17 @@ module.exports = {
 			},
 			height: {
 				'100': '26rem',
-				'110': '28rem'
+				'110': '28rem',
+				'mac': '1200px'
 			},
 			gridTemplateColumns: {
 				'auto-fit': 'repeat( auto-fit, minmax(250px, 1fr) );'
+			},
+			fontSize: {
+				'inherit': 'inherit'
+			},
+			lineHeight: {
+				'inherit': 'inherit'
 			}
 		},
 	},

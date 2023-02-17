@@ -1,0 +1,23 @@
+---
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+---
+
+<style is:global>
+  pre {
+    background: #151718;
+    font-size: xx-large;
+    border-radius: 10px;
+    padding: 40px;
+  }
+  pre > code {
+    display: grid;
+    row-gap: 10px;
+  }
+</style>
+
+<NationalCodingDayLayout
+  page={16}
+  type="header"
+  title="Tree-shakeable Internal Libs"
+  subTitle="Codegen"
+/>

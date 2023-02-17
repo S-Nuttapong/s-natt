@@ -1,0 +1,20 @@
+---
+import designSystemSrc from "../../assets/design-system.png";
+import AstroImage from "../../components/AstroImage.astro";
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+---
+
+<NationalCodingDayLayout
+  page={14}
+  title="Tree-shakeable Internal Libs"
+  subTitle="Design system"
+>
+  <div class="flex w-full justify-center">
+    <AstroImage
+      src={designSystemSrc}
+      width={600}
+      height={700}
+      alt="design-system"
+    />
+  </div>
+</NationalCodingDayLayout>

@@ -1,0 +1,45 @@
+---
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import { Content } from "../../markdown/national-coding-day/codegen.md";
+---
+
+<style is:global>
+  pre {
+    background: #151718;
+    font-size: large;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 50%;
+    min-width: 500px;
+    overflow-y: scroll;
+  }
+  pre > code {
+    display: grid;
+    row-gap: 10px;
+  }
+  
+  code {
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: fit-content;
+    margin-right: 1.5rem;
+    display: inline-block;
+    text-align: right;
+    color: rgba(115, 138, 148, 0.4);
+  }
+</style>
+
+<NationalCodingDayLayout
+  page={17}
+  title="Tree-shakeable Internal Libs"
+  subTitle="Codegen"
+>
+  <div class="flex w-full justify-center overflow-hidden">
+    <Content />
+  </div>
+</NationalCodingDayLayout>
