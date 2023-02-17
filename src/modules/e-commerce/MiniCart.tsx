@@ -1,9 +1,10 @@
 import { useDisclosure } from "./useDisclosure";
 
+import type { ReactNode } from "react";
 import { CartIcon } from "./CartIcon";
 import { Drawer } from "./Drawer";
 
-export const MiniCart = ({ children }: { children: JSX.Element }) => {
+export const MiniCart = ({ children = null }: { children?: ReactNode }) => {
   const { isOpen, open, close } = useDisclosure();
   return (
     <>

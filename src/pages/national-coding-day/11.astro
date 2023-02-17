@@ -3,6 +3,7 @@ import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.as
 import Globe from "../../modules/bloated-components/bloated-component";
 import { MiniCart } from "../../modules/e-commerce/MiniCart";
 import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
+import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContainer";
 ---
 
 <NationalCodingDayLayout
@@ -10,23 +11,11 @@ import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
   title="Lazy Loading"
   subTitle="Bloat components"
 >
-  <div
-    class="flex w-full h-full justify-center items-center px-10 py-5 overflow-hidden"
-  >
-    <div
-      class="bg-transparent w-full h-full border-2 border-gray-100 xxl:px-20 lg:px-10 xxl:py-10 lg:py-5 relative overflow-y-hidden"
-    >
-      <MiniCart client:load>
-        <div></div>
-      </MiniCart>
-      <div class="w-full h-full overflow-scroll">
-        <div
-          class="flex w-full h-full justify-center items-center xxl:py-20 sm:py-10"
-        >
-          <ProductCardsList row={2} />
-        </div>
-        <Globe client:load />
-      </div>
+  <StorefrontContainer>
+    <MiniCart client:load />
+    <div class="w-full h-full overflow-scroll">
+      <ProductCardsList row={2} />
+      <Globe client:load />
     </div>
-  </div>
+  </StorefrontContainer>
 </NationalCodingDayLayout>
