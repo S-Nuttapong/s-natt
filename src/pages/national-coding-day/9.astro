@@ -1,7 +1,6 @@
 ---
 import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
-import Globe from "../../modules/bloated-components/bloated-component";
-import { MiniCart } from "../../modules/e-commerce/MiniCart";
+import { MiniCartBloated } from "../../modules/e-commerce/MiniCartBloated";
 import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
 import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContainer";
 ---
@@ -9,12 +8,10 @@ import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContaine
 <NationalCodingDayLayout
   page={9}
   title="Lazy Loading"
-  subTitle="Bloat components"
+  subTitle="Bloat component #1"
 >
-  <StorefrontContainer>
-    <MiniCart client:load>
-      <Globe client:load />
-    </MiniCart>
-    <ProductCardsList />
+  <StorefrontContainer client:load>
+    <MiniCartBloated client:load/>
+    <ProductCardsList client:load />
   </StorefrontContainer>
 </NationalCodingDayLayout>

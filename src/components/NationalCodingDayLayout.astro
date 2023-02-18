@@ -9,6 +9,7 @@ interface Props {
   title: string;
   subTitle?: string;
   type?: "header" | "sub-section";
+  class?: string;
 }
 
 /**
@@ -37,7 +38,7 @@ const prevPage = addBasedPath(prev);
   </head>
   <body>
     <div
-      class="w-screen h-screen bg-black flex flex-col justify-between px-20 py-5"
+      class={`w-screen h-screen bg-black flex flex-col justify-between px-20 py-5 ${Astro.props?.class ?? ""}`}
     >
       <div>
         {

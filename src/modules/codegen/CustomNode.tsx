@@ -4,7 +4,6 @@ import { Handle, Position } from "reactflow";
 import type { initNodes } from "./CodegenFlowChart";
 
 function CustomNode({ data }: (typeof initNodes)[number]) {
-  console.debug({ data });
   return (
     <div>
       {data.header && (

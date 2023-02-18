@@ -2,9 +2,10 @@ export type Props = {
   children?: JSX.Element;
   onClose: () => void;
   isOpen: boolean;
+  header: string;
 };
 
-export const Drawer = ({ children, isOpen, onClose }: any) => {
+export const Drawer = ({ children, isOpen, onClose, header }: any) => {
   return (
     <div
       className={
@@ -21,7 +22,7 @@ export const Drawer = ({ children, isOpen, onClose }: any) => {
         }
       >
         <article className="relative w-screen max-w-lg pb-10 flex flex-col space-y-6 overflow-y-scroll h-full">
-          <header className="p-4 font-bold text-lg text-white">Header</header>
+          <header className="p-4 font-bold text-lg text-white">{header}</header>
           {children}
         </article>
       </section>

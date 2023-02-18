@@ -6,7 +6,7 @@ import { Drawer } from "./Drawer";
 
 const A = React.lazy(() => import("../bloated-components/bloated-component"));
 
-export const MiniCart = ({ children = null }: { children?: ReactNode }) => {
+export const MiniCartLazy = ({ children = null }: { children?: ReactNode }) => {
   const { isOpen, open, close } = useDisclosure();
   const [isVisible, setVisible] = useState(false);
 
