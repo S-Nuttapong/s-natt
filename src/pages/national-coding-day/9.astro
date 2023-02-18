@@ -10,8 +10,8 @@ import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContaine
   title="Lazy Loading"
   subTitle="Bloat component #1"
 >
-  <StorefrontContainer client:load>
-    <MiniCartBloated client:load/>
-    <ProductCardsList client:load />
+  <StorefrontContainer>
+    <MiniCartBloated client:only/>
+    <ProductCardsList client:only />
   </StorefrontContainer>
 </NationalCodingDayLayout>
