@@ -1,0 +1,1 @@
+> *The [Current set of Core Web Vitals](https://developers.google.com/search/blog/2021/08/simplifying-the-page-experience-report) focuses on three aspects of the user experience – loading, interactivity, and visual stability*
