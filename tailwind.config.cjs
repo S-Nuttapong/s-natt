@@ -11,6 +11,9 @@ module.exports = {
 				'110': '28rem',
 				'mac': '1200px'
 			},
+			minHeight: {
+				'100': '100px'
+			},
 			gridTemplateColumns: {
 				'auto-fit': 'repeat( auto-fit, minmax(250px, 1fr) );'
 			},
