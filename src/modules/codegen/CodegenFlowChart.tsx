@@ -165,7 +165,7 @@ const FLow = () => {
           return { title: "100kb !!!", color: "text-red-500" };
 
         if (source === "re-export" && target === "product-page")
-          return { title: "1kb", color: "text-green-500" };
+          return { title: "1kb  🎉", color: "text-green-500" };
 
         return { title: "" };
       };
