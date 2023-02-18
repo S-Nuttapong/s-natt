@@ -12,9 +12,11 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 import image from "@astrojs/image";
 
+import { astroImageTools } from "astro-imagetools";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind(), mdx(), image()],
+  integrations: [react(), tailwind(), mdx(), image(), astroImageTools],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)

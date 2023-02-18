@@ -4,7 +4,8 @@ import { Icon } from "astro-icon";
 interface Props {
   isFirstPage?: boolean;
   page: number;
-  next?: number;
+  next?: string;
+  prev?: string;
   title: string;
   subTitle?: string;
   type?: "header" | "sub-section";
@@ -18,14 +19,15 @@ const addBasedPath = (lastSegment: string) =>
 
 const {
   page,
-  next = page,
+  next = `${page + 1}`,
+  prev = `${page - 1}`,
   title = "",
   subTitle = "",
   type = "sub-section",
   isFirstPage = false,
 } = Astro.props;
-const nextPage = addBasedPath(`${next + 1}`);
-const prevPage = addBasedPath(page === 1 ? "" : `${page - 1}`);
+const nextPage = addBasedPath(next);
+const prevPage = addBasedPath(prev);
 ---
 
 <html lang="en">
