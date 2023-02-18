@@ -1,5 +1,28 @@
 ---
+
+import lodashProblemSrc from "../../assets/lodash-problem.webp";
+import AstroImage from "../../components/AstroImage.astro";
 import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import { Content } from "../../markdown/national-coding-day/lodash-problem.md";
+
 ---
 
-<NationalCodingDayLayout page={3} type="header" title="What can we do in the meantime?"/>
+<style is:global>
+    pre {
+      background: #151718;
+      font-size: xx-large;
+      border-radius: 10px;
+      padding: 40px;
+    }
+    pre > code {
+      display: grid;
+      row-gap: 10px;
+    }
+  </style>
+
+<NationalCodingDayLayout page={3} title="CJS based package" subTitle="Lodash">
+  <div class="flex w-full h-full justify-between items-center">
+        <Content />
+        <AstroImage src={lodashProblemSrc} width={1000} height={540} alt="lodash-problem"/>
+  </div>
+</NationalCodingDayLayout>

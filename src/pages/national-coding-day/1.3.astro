@@ -1,0 +1,21 @@
+---
+import businessPosSrc from "../../assets/business-positive-impact.webp";
+import AstroImage from "../../components/AstroImage.astro";
+import MdStyle from "../../components/MdStyle.astro";
+import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
+import { Content } from "../../markdown/national-coding-day/web-vitals-and-business.md";
+---
+
+<NationalCodingDayLayout page={3} title="Improve core web vitals = improve sales">
+  <div class="flex flex-col h-full w-full justify-center items-center gap-3">
+    <AstroImage
+      src={businessPosSrc}
+      width={800}
+      height={400}
+      alt="core-web-business-impact"
+    />
+    <MdStyle>
+      <Content />
+    </MdStyle>
+  </div>
+</NationalCodingDayLayout>

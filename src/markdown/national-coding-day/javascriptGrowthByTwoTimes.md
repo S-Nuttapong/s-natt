@@ -1,1 +1,1 @@
-> *Since 2013, [the number of javascript shipped](https://astro.build) to the browser has grown by 200%, from 265kb to 529kb*
+Since 2013, [the number of javascript shipped](https://astro.build) to the browser has grown by over 200%

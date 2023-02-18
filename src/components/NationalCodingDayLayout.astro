@@ -2,7 +2,9 @@
 import { Icon } from "astro-icon";
 
 interface Props {
+  isFirstPage?: boolean;
   page: number;
+  next?: number;
   title: string;
   subTitle?: string;
   type?: "header" | "sub-section";
@@ -14,9 +16,16 @@ interface Props {
 const addBasedPath = (lastSegment: string) =>
   `/national-coding-day/${lastSegment}`;
 
-const { page, title = "", subTitle = "", type = "sub-section" } = Astro.props;
-const next = addBasedPath(`${page + 1}`);
-const prev = addBasedPath(page === 1 ? "" : `${page - 1}`);
+const {
+  page,
+  next = page,
+  title = "",
+  subTitle = "",
+  type = "sub-section",
+  isFirstPage = false,
+} = Astro.props;
+const nextPage = addBasedPath(`${next + 1}`);
+const prevPage = addBasedPath(page === 1 ? "" : `${page - 1}`);
 ---
 
 <html lang="en">
@@ -32,9 +41,9 @@ const prev = addBasedPath(page === 1 ? "" : `${page - 1}`);
         {
           type === "sub-section" && (
             <div>
-              <h1 class="text-9xl text-white">{title}</h1>
+              <h1 class="text-8xl text-white">{title}</h1>
               {subTitle && (
-                <h2 class="w-full text-6xl text-white text-left">{subTitle}</h2>
+                <h2 class="w-full text-5xl text-white text-left">{subTitle}</h2>
               )}
             </div>
           )
@@ -54,13 +63,18 @@ const prev = addBasedPath(page === 1 ? "" : `${page - 1}`);
       <slot />
       <nav class="flex justify-center mt-4">
         <div class="flex gap-2">
-          <a href={prev} class="text-white">
+          <a
+            href={prevPage}
+            class={`text-white ${isFirstPage ? "pointer-events-none" : ""}`}
+          >
             <Icon
               name="charm:chevron-left"
-              class="text-gray-500 fill-current w-20 hover:text-gray-50"
+              class={`text-gray-500 fill-current w-20 ${
+                isFirstPage ? "" : "hover:text-gray-50"
+              }`}
             />
           </a>
-          <a href={next} class="text-white">
+          <a href={nextPage} class="text-white">
             <Icon
               name="charm:chevron-right"
               class="text-gray-500 fill-current w-20 hover:text-gray-50"

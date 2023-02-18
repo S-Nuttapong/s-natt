@@ -1,0 +1,1 @@
+[Vodafone (Italy) improved LCP](https://web.dev/vodafone) by 31% to achieve 8% more sales.
