@@ -9,7 +9,7 @@ function CustomNode({ data }: (typeof initNodes)[number]) {
     <div>
       {data.header && (
         <div
-          className={`mb-2 text-center  text-md ${
+          className={`mb-2 text-center h-5 text-md ${
             get(data.header, "color") ?? "text-white"
           }`}
         >
