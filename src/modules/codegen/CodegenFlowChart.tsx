@@ -140,7 +140,19 @@ const FLow = () => {
   //@ts-ignore
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
-  // const updateNodeInternals = useUpdateNodeInternals();
+
+  const updateNodesHeader = (id: NodeId, header = {}) => {
+    const productNode = nodes.find((n) => n.id === id);
+    const updatedNodes = [
+      ...nodes.filter((n) => n.id !== id),
+      {
+        ...productNode,
+        data: { ...productNode?.data, header },
+      },
+    ];
+    setNodes(updatedNodes as typeof nodes);
+  };
+
   const onConnect = useCallback((params: Edge) => {
     setEdges((eds) => {
       console.debug({ eds, params });
@@ -159,15 +171,7 @@ const FLow = () => {
       };
 
       const productPageNodeHeader = getProuctPageHeader();
-      const productNode = nodes.find((n) => n.id === "product-page");
-      const updatedNodes = [
-        ...nodes.filter((n) => n.id !== "product-page"),
-        {
-          ...productNode,
-          data: { ...productNode?.data, header: productPageNodeHeader },
-        },
-      ];
-      setNodes(updatedNodes as typeof nodes);
+      updateNodesHeader("product-page", productPageNodeHeader);
 
       return addEdge(params, eds);
     });
@@ -185,11 +189,23 @@ const FLow = () => {
       <ReactFlow
         nodes={nodes}
         edges={edges}
-        onNodesChange={(e) => {
-          console.debug("node change: ", { e });
-          onNodesChange(e);
+        onNodesChange={onNodesChange}
+        onEdgesChange={(e) => {
+          const [firstE] = e;
+          const productPageEdgeConnection = (id: string) =>
+            ["generate-product-page", "re-export-product-page"].some(
+              (edgeConnection) => id.includes(edgeConnection)
+            );
+
+          if (
+            firstE.type === "remove" &&
+            productPageEdgeConnection(firstE.id)
+          ) {
+            updateNodesHeader("product-page", { title: "" });
+          }
+
+          return onEdgesChange(e);
         }}
-        onEdgesChange={(e) => onEdgesChange(e)}
         //@ts-ignore
         onConnect={onConnect}
         //@ts-ignore
