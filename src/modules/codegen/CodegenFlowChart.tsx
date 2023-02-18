@@ -92,7 +92,7 @@ export const initNodes = [
       ),
     },
 
-    position: { x: 400, y: 0 },
+    position: { x: 800, y: 150 },
   },
   {
     id: "modularizer",
