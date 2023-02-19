@@ -7,11 +7,11 @@ import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContaine
 
 <NationalCodingDayLayout
   page={10}
-  title="Lazy Loading"
-  subTitle="Bloat components #1 Solution"
+  title="Code Splitting #1"
+  subTitle="The solution"
 >
   <StorefrontContainer>
     <MiniCartLazy client:load/>
-    <ProductCardsList />
+    <ProductCardsList client:only/>
   </StorefrontContainer>
 </NationalCodingDayLayout>
