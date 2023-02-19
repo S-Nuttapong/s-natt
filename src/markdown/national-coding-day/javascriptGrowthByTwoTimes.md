@@ -1,1 +1,1 @@
-Since 2013, [the number of javascript shipped](https://astro.build) to the browser has grown by over 200%
+Since 2013, [the number of javascript shipped](https://httparchive.org/reports/state-of-javascript#bytesJs) to the browser has grown by over 200%

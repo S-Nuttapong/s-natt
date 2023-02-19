@@ -1,6 +1,6 @@
 ---
 import NationalCodingDayLayout from "../../components/NationalCodingDayLayout.astro";
-import Globe from "../../modules/bloated-components/bloated-component";
+import BloatedEcom from "../../modules/e-commerce/BloatedEcom";
 import { MiniCart } from "../../modules/e-commerce/MiniCart";
 import { ProductCardsList } from "../../modules/e-commerce/ProductCardsList";
 import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContainer";
@@ -18,7 +18,7 @@ import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContaine
       <div class="w-full h-130 flex flex-col p-4 border-2 border-white">
         <div class="text-white text-3xl">You may also like</div>
         <div class="flex justify-center">
-          <Globe client:only />
+          <BloatedEcom client:only />
         </div>
       </div>
     </div>

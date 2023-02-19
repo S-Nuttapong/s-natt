@@ -1,7 +1,7 @@
 import { useDisclosure } from "./useDisclosure";
 
 import type { ReactNode } from "react";
-import Globe from "../bloated-components/bloated-component";
+import BloatedEcom from "./BloatedEcom";
 import { CartIcon } from "./CartIcon";
 import { Drawer } from "./Drawer";
 
@@ -14,9 +14,7 @@ export const MiniCartBloated = ({
   return (
     <>
       <Drawer isOpen={isOpen} onClose={close} header="Cart">
-        <div className="ml-6">
-          <Globe />
-        </div>
+        <BloatedEcom />
       </Drawer>
       <div className="w-full flex justify-end text-gray-100">
         <CartIcon onClick={open} />

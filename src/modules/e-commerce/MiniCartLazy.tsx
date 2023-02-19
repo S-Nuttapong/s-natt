@@ -4,7 +4,7 @@ import React, { ReactNode, Suspense, useState } from "react";
 import { CartIcon } from "./CartIcon";
 import { Drawer } from "./Drawer";
 
-const Globe = React.lazy(() => import("../bloated-components/bloated-component"));
+const BloatedEcom = React.lazy(() => import("./BloatedEcom"));
 
 export const MiniCartLazy = ({ children = null }: { children?: ReactNode }) => {
   const { isOpen, open, close } = useDisclosure();
@@ -18,11 +18,7 @@ export const MiniCartLazy = ({ children = null }: { children?: ReactNode }) => {
     <>
       <Drawer isOpen={isOpen} onClose={close} header="Cart">
         <Suspense fallback="...loading">
-          {isVisible ? (
-            <div className="ml-6">
-              <Globe />
-            </div>
-          ) : null}
+          {isVisible ? <BloatedEcom /> : null}
         </Suspense>
       </Drawer>
       <div className="w-full flex justify-end text-gray-100">
