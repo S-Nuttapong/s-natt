@@ -15,7 +15,12 @@ import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContaine
     <MiniCart client:load />
     <div class="w-full h-full overflow-scroll">
       <ProductCardsList row={2} />
-      <Globe client:visible />
+      <div class="w-full h-130 flex flex-col p-4 border-2 border-white">
+        <div class="text-white text-3xl">You may also like</div>
+        <div class="flex justify-center">
+          <Globe client:visible />
+        </div>
+      </div>
     </div>
   </StorefrontContainer>
 </NationalCodingDayLayout>

@@ -1,26 +1,18 @@
 import { useDisclosure } from "./useDisclosure";
 
-import React, { ReactNode, Suspense, useState } from "react";
+import type { ReactNode } from "react";
 import { CartIcon } from "./CartIcon";
 import { Drawer } from "./Drawer";
 
-const A = React.lazy(() => import("../bloated-components/bloated-component"));
-
-export const MiniCart = ({ children = null }: { children?: ReactNode }) => {
+export const MiniCart = ({ children  }: { children?: ReactNode }) => {
   const { isOpen, open, close } = useDisclosure();
-  const [isVisible, setVisible] = useState(false);
-
-  const onOpen = () => {
-    open();
-    setVisible(true);
-  };
   return (
     <>
       <Drawer isOpen={isOpen} onClose={close} header="Cart">
-        <Suspense fallback="...loading">{isVisible ? <A /> : null}</Suspense>
+        <div className="w-full text-white text-3xl text-center">Cart is Empty !</div>
       </Drawer>
       <div className="w-full flex justify-end text-gray-100">
-        <CartIcon onClick={onOpen} />
+        <CartIcon onClick={open} />
       </div>
     </>
   );

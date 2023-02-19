@@ -11,11 +11,16 @@ import { StorefrontContainer } from "../../modules/e-commerce/StorefrontContaine
   title="Lazy Loading"
   subTitle="Bloat components"
 >
-  <StorefrontContainer client:load>
-    <MiniCart client:load />
+  <StorefrontContainer>
+    <MiniCart client:only />
     <div class="w-full h-full overflow-scroll">
-      <ProductCardsList row={2} client:load />
-      <Globe client:load />
+      <ProductCardsList row={2} />
+      <div class="w-full h-130 flex flex-col p-4 border-2 border-white">
+        <div class="text-white text-3xl">You may also like</div>
+        <div class="flex justify-center">
+          <Globe client:only />
+        </div>
+      </div>
     </div>
   </StorefrontContainer>
 </NationalCodingDayLayout>

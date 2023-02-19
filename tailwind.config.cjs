@@ -9,7 +9,9 @@ module.exports = {
 			height: {
 				'100': '26rem',
 				'110': '28rem',
-				'mac': '1200px'
+				'mac': '1200px',
+				'120': '30rem',
+				'130': '32rem',
 			},
 			minHeight: {
 				'100': '100px'
