@@ -1,5 +1,5 @@
 import Globe from "../bloated-components/bloated-component";
-import Codegen from "../codegen/CodegenFlowChart";
+//import Codegen from "../codegen/CodegenFlowChart";
 import { NPMTrend } from "../npm-trends";
 
 const BloatedEcom = () => (
@@ -8,9 +8,9 @@ const BloatedEcom = () => (
     <div className="hidden">
       <NPMTrend />
     </div>
-    <div className="hidden">
+    {/* <div className="hidden">
       <Codegen />
-    </div>
+    </div> */}
   </div>
 );
 
