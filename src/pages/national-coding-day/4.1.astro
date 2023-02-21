@@ -1,6 +1,7 @@
 ---
-import { Content } from "../../markdown/national-coding-day/lodash-problem.md";
+import lodashProblemSrc from "../../assets/lodash-problem.webp";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+import AstroImage from "../../shared/components/AstroImage.astro";
 ---
 
 <style is:global>
@@ -18,11 +19,17 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
 
 <NationalCodingDayLayout
   page={4}
-  next="4.1"
+  next="5"
+  prev="4.1"
   title="Fixing 3rd party packages import"
   subTitle="Lodash"
 >
   <div class="flex w-full h-full justify-center items-center">
-    <Content />
+    <AstroImage
+      src={lodashProblemSrc}
+      width={1000}
+      height={500}
+      alt="lodash-problem"
+    />
   </div>
 </NationalCodingDayLayout>

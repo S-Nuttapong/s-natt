@@ -31,6 +31,7 @@
 		"reactflow": "^11.5.6",
 		"rehype-pretty-code": "^0.9.3",
 		"tailwindcss": "^3.2.6",
+		"tailwindcss-fluid-type": "^2.0.3",
 		"topojson-client": "^3.1.0"
 	},
 	"devDependencies": {
