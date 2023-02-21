@@ -1,8 +1,10 @@
-import type { ReactNode } from "react";
 import { HoverCard } from "../../../shared/components/HoverCard";
 
-type Props = {
-  children: ReactNode;
+export type HowItWorksProps = {
+  instruction: {
+    title: string;
+    steps: string[];
+  };
 };
 
 const InfoIcon = () => (
@@ -22,7 +24,7 @@ const InfoIcon = () => (
   </svg>
 );
 
-export const HowItWorks = ({ children }: Props) => (
+export const HowItWorks = ({ instruction }: HowItWorksProps) => (
   <HoverCard
     title={
       <div className="text-white text-xs w-fit inline-flex gap-2 items-center justify-center bg-transparent hover:cursor-pointer">
@@ -32,17 +34,27 @@ export const HowItWorks = ({ children }: Props) => (
     }
     configs={{
       content: {
-        className: "max-w-md rounded-lg p-4 md:w-full bg-black border-2 border-white"
+        className:
+          "max-w-md rounded-lg p-4 md:w-full bg-black border-2 border-white",
       },
       arrow: {
-        className: "dark:text-white"
+        className: "dark:text-white",
       },
       root: {
         openDelay: 300,
-        closeDelay: 300
-      }
+        closeDelay: 300,
+      },
     }}
   >
-    {children}
+    <div className="text-white text-sm">
+      <div className="text-inherit">{instruction.title}</div>
+      <ol className="list-auto list-inside pl-2">
+        {instruction.steps.map((step) => (
+          <li key={step} className="text-inherit">
+            {step}
+          </li>
+        ))}
+      </ol>
+    </div>
   </HoverCard>
 );

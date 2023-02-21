@@ -1,6 +1,20 @@
 ---
-import CodegenFlowChart from "../../modules/national-coding-day/codegen/CodegenFlowChart";
-import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+import CodegenFlowChart from '../../modules/national-coding-day/codegen/CodegenFlowChart';
+import { HowItWorks } from '../../modules/national-coding-day/e-commerce/HowItWorks';
+import NationalCodingDayLayout from '../../modules/national-coding-day/NationalCodingDayLayout.astro';
+
+const PAGE_12_INSTRUCTION = {
+  title:
+    `This case study compares the product page's bundle shipped to browser between unmodular codegen, aka the dumping ground and modular codegen, observe the difference by following the steps below.`,
+  steps: [
+    'wire "generate.tsx" to product page box by click the  handle (the vertical teal bar)',
+    'Observe how much bundle size shipped to the browser in kb at the top of the product page box',
+    'Unwire the "generate.tsx" and product page by pressing the "deleting" on keyboard',
+    'Wire "generate.tsx" to the left of "mod-gen", and wire the "index.ts" to the product page box',
+    'Observe how much bundle size shipped to the browser in kb at the top of the product page box',
+    `You may notice that the bundle size is now shipped 100 times less than the first way, that's because bundler now can statically analyze which export is being used`,
+  ],
+};
 ---
 
 <style is:global>
@@ -36,10 +50,15 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
 
 <NationalCodingDayLayout
   page={18}
-  title="Tree-shakeable modules"
-  subTitle="Codegen"
+  title='Tree-shakeable modules'
+  subTitle='Codegen'
 >
-  <div class="flex w-full justify-center overflow-hidden relative">
-      <CodegenFlowChart client:only/>
+  <div
+    class='flex flex-col w-full h-full justify-center overflow-hidden relative'
+  >
+    <div class='flex w-full h-full justify-end items-start'>
+      <HowItWorks instruction={PAGE_12_INSTRUCTION} client:only />
+    </div>
+    <CodegenFlowChart client:only />
   </div>
 </NationalCodingDayLayout>
