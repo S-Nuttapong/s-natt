@@ -3,6 +3,13 @@ import { MiniCartBloated } from "../../modules/national-coding-day/e-commerce/Mi
 import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
 import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+
+const PAGE_9_INSTRUCTIONS = [
+  "Emulate the CPU and Network, ideally keep the network speed and throttle CPU",
+  "If it's not possible, you can try fast 3G to begin with",
+  "Reload and observe how storefront is being paint, you may notice flasing of content",
+  "See how much resource in MB is being loaded",
+];
 ---
 
 <NationalCodingDayLayout
@@ -10,8 +17,8 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
   title="Code Splitting #1"
   subTitle="The problem"
 >
-  <StorefrontContainer>
-    <MiniCartBloated client:only/>
+  <StorefrontContainer instructions={PAGE_9_INSTRUCTIONS} client:load>
+    <MiniCartBloated client:only />
     <ProductCardsList client:only />
   </StorefrontContainer>
 </NationalCodingDayLayout>

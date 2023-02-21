@@ -10,6 +10,9 @@ module.exports = {
 			gridTemplateColumns: {
 				'product-grid': 'repeat( auto-fit, minmax(250px, 1fr));'
 			},
+			listStyleType: {
+				'auto': 'auto'	
+			},
 			fontSize: {
 				'inherit': 'inherit'
 			},
