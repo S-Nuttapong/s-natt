@@ -5,6 +5,7 @@ module.exports = {
 		extend: {
 			screens: {
 				xxl: '1700px',
+				xs: '320px'
 			},
 			gridTemplateColumns: {
 				'product-grid': 'repeat( auto-fit, minmax(250px, 1fr));'
@@ -14,7 +15,11 @@ module.exports = {
 			},
 			lineHeight: {
 				'inherit': 'inherit'
-			}
+			},
+			spacing: {
+				20: "clamp(2.50rem, calc(1.25rem + 5.00vw), 7.50rem)"
+				//clamp(0.94rem, calc(0.55rem + 1.56vw), 2.50rem);
+			},
 		},
 	},
 	plugins: [

@@ -17,13 +17,22 @@ import AstroImage from "../../shared/components/AstroImage.astro";
   }
 </style>
 
-<NationalCodingDayLayout page={5} title="Fixing 3rd party packages" subTitle="Lodash">
-  <div class="flex w-full h-full justify-center items-center">
+<NationalCodingDayLayout
+  page={5.1}
+  next="6"
+  prev="5"
+  title="Fixing 3rd party packages"
+  subTitle="Lodash: The Solution"
+>
+  <div class="flex flex-col gap-3 w-full h-full justify-center items-center">
     <AstroImage
       src={lodashSolutionSrc}
       width={1000}
       height={532}
       alt="lodash-solution"
     />
+    <div class="text-white text-l text-center">
+      Only used modules are shipped to browser
+    </div>
   </div>
 </NationalCodingDayLayout>

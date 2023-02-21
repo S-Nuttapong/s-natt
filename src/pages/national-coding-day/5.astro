@@ -22,10 +22,16 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
   next="5.1"
   prev="4.1"
   title="Fixing 3rd party packages"
-  subTitle="Lodash"
+  subTitle="Lodash: The Solution"
 >
   <div class="flex w-full h-full justify-around items-center flex-wrap">
-    <div><LodashDirectImport /></div>
-    <div><LodasESM /></div>
+    <div class="flex flex-col gap-1">
+      <LodashDirectImport />
+      <div class="text-white text-xl text-center">Direct import</div>
+    </div>
+    <div class="flex flex-col gap-1">
+      <LodasESM />
+      <div class="text-white text-xl text-center">Lodash ES module</div>
+    </div>
   </div>
 </NationalCodingDayLayout>

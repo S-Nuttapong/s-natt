@@ -20,16 +20,21 @@ import AstroImage from "../../shared/components/AstroImage.astro";
 <NationalCodingDayLayout
   page={4}
   next="5"
-  prev="3.1"
+  prev="4"
   title="Fixing 3rd party packages import"
-  subTitle="Lodash"
+  subTitle="Lodash: The Problem"
 >
   <div class="flex w-full h-full justify-center items-center">
-    <AstroImage
-      src={lodashProblemSrc}
-      width={1000}
-      height={500}
-      alt="lodash-problem"
-    />
+    <div class="flex flex-col gap-3 w-full h-full justify-center items-center">
+      <AstroImage
+        src={lodashProblemSrc}
+        width={1000}
+        height={500}
+        alt="lodash-problem"
+      />
+      <div class="text-white text-l text-center">
+        Results in the whole Lodash modules shipped to browser 
+      </div>
+    </div>
   </div>
 </NationalCodingDayLayout>
