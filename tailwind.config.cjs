@@ -23,6 +23,7 @@ module.exports = {
 		},
 	},
 	plugins: [
+		require("tailwindcss-radix")(), 
 		require('tailwindcss-fluid-type')({
 			// your fluid type settings
 			// works only with unitless numbers
