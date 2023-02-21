@@ -5,6 +5,18 @@ import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/P
 import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
 import { YouMayLikeSection } from "../../modules/national-coding-day/e-commerce/YouMayLikeSection";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+
+const PAGE_11_INSTRUCTION = {
+  title:
+    "This case study illustrates the problem where we ship the bloated 'other products you may also like' section to the browser, to understand the problem follow the steps below.",
+  steps: [
+    "Open browser inspector",
+    "Emulate the CPU and Network, ideally keep the network speed and throttle CPU",
+    "If it's not possible, you can try fast 3G to begin with",
+    "Reload and observe how storefront is being paint, you may notice flasing of content",
+    "Observe the resource being loaded, you may notice ",
+  ],
+};
 ---
 
 <NationalCodingDayLayout
@@ -12,7 +24,7 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
   title="Code Splitting #2"
   subTitle="The Problem"
 >
-  <StorefrontContainer>
+  <StorefrontContainer instruction={PAGE_11_INSTRUCTION} client:load>
     <MiniCart client:load />
     <div class="w-full h-full overflow-scroll">
       <ProductCardsList row={2} client:only />

@@ -5,6 +5,17 @@ import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/P
 import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
 import { YouMayLikeSection } from "../../modules/national-coding-day/e-commerce/YouMayLikeSection";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+
+const PAGE_12_INSTRUCTION = {
+  title:
+    "Since users won't see this very last sections right away, we can load it once users scroll to it's section, this can be achieve using intersection observer API, observe the changes by following the steps below.",
+  steps: [
+    "Repeat the previous step",
+    "Notice that there is no flasing of content",
+    "Observe the resources being loaded initially",
+    "Scroll down until you see the 'you may also like' section and now you can see the cart resource is only loaded upon first cart clicking",
+  ],
+};
 ---
 
 <NationalCodingDayLayout
@@ -12,10 +23,10 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
   title="Code Splitting #2"
   subTitle="The Solution"
 >
-  <StorefrontContainer>
+  <StorefrontContainer instruction={PAGE_12_INSTRUCTION} client:load>
     <MiniCart client:load />
     <div class="w-full h-full overflow-scroll">
-      <ProductCardsList row={2} client:only />
+      <ProductCardsList row={2} client:load />
       <YouMayLikeSection client:only>
         <BloatedEcom client:visible />
       </YouMayLikeSection>

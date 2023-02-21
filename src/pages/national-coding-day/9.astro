@@ -4,20 +4,25 @@ import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/P
 import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
 
-const PAGE_9_INSTRUCTIONS = [
-  "Emulate the CPU and Network, ideally keep the network speed and throttle CPU",
-  "If it's not possible, you can try fast 3G to begin with",
-  "Reload and observe how storefront is being paint, you may notice flasing of content",
-  "See how much resource in MB is being loaded",
-];
+const PAGE_9_INSTRUCTION = {
+  title:
+    "This case study illustrates the problem where we ship the bloated cart module to the browser, to understand the problem follow the steps below.",
+  steps: [
+    "Open browser inspector",
+    "Emulate the CPU and Network, ideally keep the network speed and throttle CPU",
+    "If it's not possible, you can try fast 3G to begin with",
+    "Reload and observe how storefront is being paint, you may notice flasing of content",
+    "Observe the resource being loaded, you may notice ",
+  ],
+};
 ---
 
 <NationalCodingDayLayout
   page={9}
   title="Code Splitting #1"
-  subTitle="The problem"
+  subTitle="Bloated Cart: The problem"
 >
-  <StorefrontContainer instructions={PAGE_9_INSTRUCTIONS} client:load>
+  <StorefrontContainer instruction={PAGE_9_INSTRUCTION} client:load>
     <MiniCartBloated client:only />
     <ProductCardsList client:only />
   </StorefrontContainer>
