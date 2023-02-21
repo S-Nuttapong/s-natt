@@ -1,4 +1,3 @@
-import "chartjs-adapter-date-fns";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -8,15 +7,16 @@ import {
   PointElement,
   TimeScale,
   Title,
-  Tooltip,
+  Tooltip
 } from "chart.js";
+import "chartjs-adapter-date-fns";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import {
   DATE_FNS_TREND,
   DAY_JS_TREND,
   LUXON_TRENDS,
-  MOMENT_JS_TRENDS,
+  MOMENT_JS_TRENDS
 } from "./constants";
 import { groupDownloadsByPeriod } from "./utils/groupDates";
 
@@ -70,90 +70,90 @@ export const NPMTrend = () => {
   if (!isRegistered) return <></>;
 
   return (
-    <Line
-      data={{ datasets, labels }}
-      options={{
-        responsive: false,
-        scales: {
-          x: {
-            type: "time",
-            time: {
-              unit: "quarter",
-              displayFormats: {
-                quarter: "MMM yyyy",
+    <div className="relative xl:w-[1200px] xl:h-[540px] sm:w-full sm:h-full">
+      <Line
+        data={{ datasets, labels }}
+        options={{
+          responsive: true,
+          scales: {
+            x: {
+              type: "time",
+              time: {
+                unit: "quarter",
+                displayFormats: {
+                  quarter: "MMM yyyy",
+                },
+              },
+              ticks: {
+                color: "white",
+                font: {
+                  size: 20,
+                },
               },
             },
-            ticks: {
-              color: "white",
-              font: {
+            y: {
+              ticks: {
+                color: "white",
+                font: {
+                  size: 20,
+                },
+              },
+            },
+          },
+          interaction: {
+            intersect: false,
+            mode: "index",
+          },
+          plugins: {
+            legend: {
+              position: "top",
+              display: true,
+              labels: {
+                color: "white",
+                font: {
+                  size: 20,
+                },
+              },
+            },
+            tooltip: {
+              usePointStyle: true,
+              callbacks: {
+                labelColor: (ctx) => ({
+                  borderColor: colors[ctx.datasetIndex],
+                  backgroundColor: colors[ctx.datasetIndex],
+                  borderWidth: 2,
+                  borderDash: [2, 2],
+                  borderRadius: 2,
+                }),
+                labelPointStyle: () => ({
+                  pointStyle: "rect",
+                  rotation: 0,
+                }),
+                label: (ctx) => ctx.formattedValue,
+                title: ([ctx]) => ctx.label.split(", ").slice(0, -1).join(", "),
+              },
+              padding: 20,
+              displayColors: true,
+              titleMarginBottom: 10,
+              bodySpacing: 10,
+              titleFont: {
+                size: 20,
+              },
+              bodyFont: {
                 size: 20,
               },
             },
-          },
-          y: {
-            ticks: {
+            title: {
+              display: true,
+              text: "Downloads this past years",
               color: "white",
               font: {
-                size: 20,
+                size: 30,
               },
             },
           },
-        },
-        interaction: {
-          intersect: false,
-          mode: "index",
-        },
-        plugins: {
-          legend: {
-            position: "top",
-            display: true,
-            labels: {
-              color: "white",
-              font: {
-                size: 20,
-              },
-            },
-          },
-          tooltip: {
-            usePointStyle: true,
-            callbacks: {
-              labelColor: (ctx) => ({
-                borderColor: colors[ctx.datasetIndex],
-                backgroundColor: colors[ctx.datasetIndex],
-                borderWidth: 2,
-                borderDash: [2, 2],
-                borderRadius: 2,
-              }),
-              labelPointStyle: () => ({
-                pointStyle: "rect",
-                rotation: 0,
-              }),
-              label: (ctx) => ctx.formattedValue,
-              title: ([ctx]) => ctx.label.split(", ").slice(0, -1).join(", "),
-            },
-            padding: 20,
-            displayColors: true,
-            titleMarginBottom: 10,
-            bodySpacing: 10,
-            titleFont: {
-              size: 20,
-            },
-            bodyFont: {
-              size: 20,
-            },
-          },
-          title: {
-            display: true,
-            text: "Downloads this past years",
-            color: "white",
-            font: {
-              size: 30,
-            },
-          },
-        },
-      }}
-      width="1200px"
-      height="540px"
-    />
+        }}
+      />
+    </div>
   );
 };

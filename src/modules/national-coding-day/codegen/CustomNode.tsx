@@ -15,7 +15,7 @@ function CustomNode({ data }: (typeof initNodes)[number]) {
           {data.header.title}
         </div>
       )}
-      <div className="px-4 py-2 relative rounded-md bg-transparent border-2 flex min-h-100 items-center border-stone-400">
+      <div className="px-4 py-2 relative rounded-md bg-transparent border-2 flex min-h-[100px] items-center border-stone-400">
         {data.content}
         <Handle
           type="target"

@@ -6,21 +6,8 @@ module.exports = {
 			screens: {
 				xxl: '1700px',
 			},
-			height: {
-				'100': '26rem',
-				'110': '28rem',
-				'mac': '1200px',
-				'120': '30rem',
-				'130': '32rem',
-			},
-			minHeight: {
-				'100': '100px'
-			},
-			width: {
-				'20ch': '20ch'
-			},
 			gridTemplateColumns: {
-				'auto-fit': 'repeat( auto-fit, minmax(250px, 1fr) );'
+				'product-grid': 'repeat( auto-fit, minmax(250px, 1fr));'
 			},
 			fontSize: {
 				'inherit': 'inherit'
