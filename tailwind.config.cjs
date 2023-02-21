@@ -16,6 +16,9 @@ module.exports = {
 			minHeight: {
 				'100': '100px'
 			},
+			width: {
+				'20ch': '20ch'
+			},
 			gridTemplateColumns: {
 				'auto-fit': 'repeat( auto-fit, minmax(250px, 1fr) );'
 			},
