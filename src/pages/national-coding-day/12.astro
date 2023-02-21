@@ -3,6 +3,7 @@ import BloatedEcom from "../../modules/national-coding-day/e-commerce/BloatedEco
 import { MiniCart } from "../../modules/national-coding-day/e-commerce/MiniCart";
 import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
 import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
+import { YouMayLikeSection } from "../../modules/national-coding-day/e-commerce/YouMayLikeSection";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
 ---
 
@@ -14,13 +15,10 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
   <StorefrontContainer>
     <MiniCart client:load />
     <div class="w-full h-full overflow-scroll">
-      <ProductCardsList row={2} />
-      <div class="w-full h-130 flex flex-col p-4 border-2 border-white">
-        <div class="text-white text-3xl">You may also like</div>
-        <div class="flex justify-center">
-          <BloatedEcom client:visible />
-        </div>
-      </div>
+      <ProductCardsList row={2} client:only />
+      <YouMayLikeSection client:only>
+        <BloatedEcom client:visible />
+      </YouMayLikeSection>
     </div>
   </StorefrontContainer>
 </NationalCodingDayLayout>
