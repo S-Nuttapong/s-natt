@@ -1,20 +1,8 @@
 ---
 import { Content } from "../../markdown/national-coding-day/design-system-nx-config.md";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
 ---
-
-<style is:global>
-  pre {
-    background: #151718;
-    font-size: clamp(0.98rem, calc(0.67rem + 1.24vw), 2.22rem);
-    border-radius: 10px;
-    padding: 40px;
-  }
-  pre > code {
-    display: grid;
-    row-gap: 10px;
-  }
-</style>
 
 <NationalCodingDayLayout
   page={15}
@@ -23,7 +11,9 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
 >
   <div class="flex w-full h-full justify-around items-center flex-wrap-reverse">
     <div class="flex flex-col gap-6">
-      <h2 class="text-white text-4xl w-[20ch]">Tree shakeable module rule of thumb:</h2>
+      <h2 class="text-white text-4xl w-[20ch]">
+        Tree shakeable module rule of thumb:
+      </h2>
       <ul
         class="text-white text-4xl flex flex-col justify-start align-top gap-6 list-disc list-inside"
       >
@@ -34,7 +24,9 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
     </div>
     <div class="flex flex-col gap-6">
       <h2 class="text-white text-4xl">Nx config example:</h2>
-      <Content />
+      <MDCodeBlockStyle>
+        <Content />
+      </MDCodeBlockStyle>
     </div>
   </div>
 </NationalCodingDayLayout>

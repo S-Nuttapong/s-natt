@@ -2,20 +2,8 @@
 import { Content as LodashDirectImport } from "../../markdown/national-coding-day/lodash-solution-direct.md";
 import { Content as LodasESM } from "../../markdown/national-coding-day/lodash-solution-esm.md";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
 ---
-
-<style is:global>
-  pre {
-    background: #151718;
-    font-size: x-large;
-    border-radius: 10px;
-    padding: 40px;
-  }
-  pre > code {
-    display: grid;
-    row-gap: 10px;
-  }
-</style>
 
 <NationalCodingDayLayout
   page={5}
@@ -24,14 +12,16 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
   title="Fixing 3rd party packages"
   subTitle="Lodash: The Solution"
 >
-  <div class="flex w-full h-full justify-around items-center flex-wrap">
-    <div class="flex flex-col gap-1">
-      <LodashDirectImport />
-      <div class="text-white text-xl text-center">Direct import</div>
+  <MDCodeBlockStyle>
+    <div class="flex w-full h-full justify-around items-center flex-wrap">
+      <div class="flex flex-col gap-1">
+        <LodashDirectImport />
+        <div class="text-white text-xl text-center">Direct import</div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <LodasESM />
+        <div class="text-white text-xl text-center">Lodash ES module</div>
+      </div>
     </div>
-    <div class="flex flex-col gap-1">
-      <LodasESM />
-      <div class="text-white text-xl text-center">Lodash ES module</div>
-    </div>
-  </div>
+  </MDCodeBlockStyle>
 </NationalCodingDayLayout>
