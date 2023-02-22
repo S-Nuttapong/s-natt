@@ -15,6 +15,14 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind(), mdx(), image()],
+  vite: {
+    ssr: {
+      /**
+       * @see https://github.com/withastro/astro/issues/3174
+       */
+      noExternal: ['@radix-ui/react-hover-card']
+    }
+  },
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
