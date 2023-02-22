@@ -1,12 +1,43 @@
+---
+import { Icon } from "astro-icon";
+---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type ="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content = {Astro.generator} >
-    <title>Astro</title>
+    <meta name="generator" content={Astro.generator} />
+    <title>S-natt</title>
   </head>
   <body>
-	<h1>My Astro Site</h1>
+    <div class="flex justify-center items-center w-screen h-screen bg-black">
+      <div
+        class="flex flex-col gap-4 w-fit justify-center text-white text-center"
+      >
+        <div class="text-inherit text-5xl">Working on one...</div>
+        <div class="flex gap-2">
+          <div class="text-inherit text-2xl">In the meantime, checkout</div>
+          <a
+            href="https://s-nuttapong.github.io/portfolio/"
+            target="_blank"
+            class="hover:text-black hover:bg-yellow-300 text-yellow-300"
+          >
+            <div class="text-inherit text-2xl underline">my old site</div>
+          </a>
+        </div>
+        <div class="flex gap-10 justify-center">
+          <a href="https://github.com/S-Nuttapong" target="_blank">
+            <Icon name="cib:github" class="text-inherit fill-current w-14" />
+          </a>
+          <a href="https://www.linkedin.com/in/s-nuttapong" target="_blank">
+            <Icon name="cib:linkedin" class="text-inherit fill-current w-14" />
+          </a>
+          <a href="https://medium.com/@nuttapong_s/google-colab-guide-detecting-badass-one-punch-man-heroes-on-android-333c9d4149" target="_blank">
+            <Icon name="cib:medium" class="text-inherit fill-current w-14" />
+          </a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
