@@ -1,11 +1,25 @@
 ---
+import { Icon } from "astro-icon";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
 ---
 
-<NationalCodingDayLayout
-  isLastPage
-  page={25}
-  type="header"
-  title="Thank you"
-  subTitle=""
-/>
+<NationalCodingDayLayout isLastPage page={25} title="" subTitle="">
+  <div class="flex flex-col justify-center gap-5">
+    <h1 class="text-white text-8xl text-center">Thank you</h1>
+    <h2 class="text-white text-2xl text-center">Let's connect!</h2>
+    <div class="flex gap-10 justify-center text-white">
+      <a href="https://github.com/S-Nuttapong" target="_blank">
+        <Icon name="cib:github" class="text-inherit fill-current w-10" />
+      </a>
+      <a href="https://www.linkedin.com/in/s-nuttapong" target="_blank">
+        <Icon name="cib:linkedin" class="text-inherit fill-current w-10" />
+      </a>
+      <a
+        href="https://medium.com/@nuttapong_s/google-colab-guide-detecting-badass-one-punch-man-heroes-on-android-333c9d4149"
+        target="_blank"
+      >
+        <Icon name="cib:medium" class="text-inherit fill-current w-10" />
+      </a>
+    </div>
+  </div>
+</NationalCodingDayLayout>
