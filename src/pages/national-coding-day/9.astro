@@ -1,29 +1,25 @@
 ---
-import { MiniCartBloated } from "../../modules/national-coding-day/e-commerce/MiniCartBloated";
-import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
-import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
+import lodashProblemSrc from "../../assets/lodash-problem.webp";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
-
-const PAGE_9_INSTRUCTION = {
-  title:
-    "This case study illustrates the problem where we ship the bloated cart module to the browser, to understand the problem follow the steps below.",
-  steps: [
-    "Open browser inspector",
-    "Emulate the CPU and Network, ideally keep the network speed and throttle CPU",
-    "If it's not possible, you can try fast 3G to begin with",
-    "Reload and observe how storefront is being paint, you may notice flasing of content",
-    "Observe the resource being loaded, you may notice ",
-  ],
-};
+import AstroImage from "../../shared/components/AstroImage.astro";
 ---
 
 <NationalCodingDayLayout
   page={9}
-  title="Code Splitting #1"
-  subTitle="Bloated Cart: The problem"
+  title="Fixing 3rd party packages import"
+  subTitle="Lodash: The Problem"
 >
-  <StorefrontContainer instruction={PAGE_9_INSTRUCTION} client:load>
-    <MiniCartBloated client:only />
-    <ProductCardsList client:only />
-  </StorefrontContainer>
+  <div class="flex w-full h-full justify-center items-center">
+    <div class="flex flex-col gap-3 w-full h-full justify-center items-center">
+      <AstroImage
+        src={lodashProblemSrc}
+        width={1000}
+        height={500}
+        alt="lodash-problem"
+      />
+      <div class="text-white text-l text-center">
+        Results in the whole Lodash modules shipped to browser 
+      </div>
+    </div>
+  </div>
 </NationalCodingDayLayout>

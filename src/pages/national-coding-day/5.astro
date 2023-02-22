@@ -1,27 +1,15 @@
 ---
-import { Content as LodashDirectImport } from "../../markdown/national-coding-day/lodash-solution-direct.md";
-import { Content as LodasESM } from "../../markdown/national-coding-day/lodash-solution-esm.md";
+import imageSrc from "../../assets/current-ui-lib-state.png";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
-import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
+import AstroImage from "../../shared/components/AstroImage.astro";
 ---
 
 <NationalCodingDayLayout
   page={5}
-  next="5.1"
-  prev="4.1"
-  title="Fixing 3rd party packages"
-  subTitle="Lodash: The Solution"
+  title="Current State of FE Framework"
+  subTitle="Most commonly used these days"
 >
-  <MDCodeBlockStyle>
-    <div class="flex w-full h-full justify-around items-center flex-wrap">
-      <div class="flex flex-col gap-1">
-        <LodashDirectImport />
-        <div class="text-white text-xl text-center">Direct import</div>
-      </div>
-      <div class="flex flex-col gap-1">
-        <LodasESM />
-        <div class="text-white text-xl text-center">Lodash ES module</div>
-      </div>
-    </div>
-  </MDCodeBlockStyle>
+  <div class="flex w-full justify-center">
+    <AstroImage src={imageSrc} width={716} height={483} alt="logo" />
+  </div>
 </NationalCodingDayLayout>

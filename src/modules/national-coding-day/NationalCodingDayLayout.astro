@@ -1,16 +1,29 @@
 ---
 import { Icon } from "astro-icon";
 
-interface Props {
-  isFirstPage?: boolean;
-  page: number;
-  next?: string;
-  prev?: string;
+type CommonPageProps = {
   title: string;
   subTitle?: string;
+  next?: string;
+  prev?: string;
+  resource?: string;
   type?: "header" | "sub-section";
   class?: string;
-}
+};
+
+type FirstPage = {
+  isFirstPage: boolean;
+} & CommonPageProps;
+
+type Page = {
+  page: number;
+} & CommonPageProps;
+
+type LastPage = {
+  isLastPage: boolean;
+} & CommonPageProps;
+
+type Props = FirstPage | Page | LastPage;
 
 /**
  * fix Netlify relative path navigation issue
@@ -19,13 +32,15 @@ const addBasedPath = (lastSegment: string) =>
   `/national-coding-day/${lastSegment}`;
 
 const {
+  isLastPage = false,
+  isFirstPage = false,
   page,
-  next = `${page + 1}`,
+  next = isFirstPage ? "1" : `${page + 1}`,
   prev = `${page - 1}`,
   title = "",
   subTitle = "",
+  resource = "",
   type = "sub-section",
-  isFirstPage = false,
 } = Astro.props;
 const nextPage = addBasedPath(next);
 const prevPage = addBasedPath(prev);
@@ -38,7 +53,9 @@ const prevPage = addBasedPath(prev);
   </head>
   <body>
     <div
-      class={`w-screen h-screen bg-black flex flex-col justify-between px-20 py-5 ${Astro.props?.class ?? ""}`}
+      class={`w-screen h-screen bg-black flex flex-col justify-between px-20 py-5 ${
+        Astro.props?.class ?? ""
+      }`}
     >
       <div>
         {
@@ -64,6 +81,11 @@ const prevPage = addBasedPath(prev);
         )
       }
       <slot />
+      {
+        resource && (
+          <div class="w-full text-white text-xs text-end">{resource}</div>
+        )
+      }
       <nav class="flex justify-center mt-4">
         <div class="flex gap-2">
           <a
@@ -80,7 +102,9 @@ const prevPage = addBasedPath(prev);
           <a href={nextPage} class="text-white">
             <Icon
               name="charm:chevron-right"
-              class="text-gray-500 fill-current w-20 hover:text-gray-50"
+              class={`text-gray-500 fill-current w-20 ${
+                isLastPage ? "" : "hover:text-gray-50"
+              }`}
             />
           </a>
         </div>

@@ -1,0 +1,32 @@
+---
+import { Content } from "../../markdown/national-coding-day/design-system-nx-config.md";
+import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
+---
+
+<NationalCodingDayLayout
+  page={21}
+  title="Enable Tree Shaking Configuration"
+  subTitle="Design system"
+>
+  <div class="flex w-full h-full justify-around items-center flex-wrap-reverse">
+    <div class="flex flex-col gap-6">
+      <h2 class="text-white text-4xl w-[20ch]">
+        Tree shakeable module rule of thumb:
+      </h2>
+      <ul
+        class="text-white text-4xl flex flex-col justify-start align-top gap-6 list-disc list-inside"
+      >
+        <li class="text-inherit">ESM export</li>
+        <li class="text-inherit">Modularized export</li>
+        <li class="text-inherit">Configurations</li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-6">
+      <h2 class="text-white text-4xl">Nx config example:</h2>
+      <MDCodeBlockStyle>
+        <Content />
+      </MDCodeBlockStyle>
+    </div>
+  </div>
+</NationalCodingDayLayout>

@@ -1,23 +1,28 @@
 ---
+import { MiniCartLazy } from "../../modules/national-coding-day/e-commerce/MiniCartLazy";
+import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
+import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
----
 
-<style is:global>
-  pre {
-    background: #151718;
-    font-size: xx-large;
-    border-radius: 10px;
-    padding: 40px;
-  }
-  pre > code {
-    display: grid;
-    row-gap: 10px;
-  }
-</style>
+const PAGE_10_INSTRUCTION = {
+  title:
+    "Since cart module does not need to be display soon as users land on the page, we can load it upon users' click event instead, observe the changes by following the steps below.",
+  steps: [
+    "Repeat the previous step",
+    "Notice that there is no flasing of content",
+    "Observe the resources being loaded initially",
+    "Click cart, and now you can see the cart resource is only loaded upon first cart clicking",
+  ],
+};
+---
 
 <NationalCodingDayLayout
   page={16}
-  type="header"
-  title="Tree-shakeable modules"
-  subTitle="Codegen"
-/>
+  title="Code Splitting #1"
+  subTitle="The solution"
+>
+  <StorefrontContainer instruction={PAGE_10_INSTRUCTION} client:load>
+    <MiniCartLazy client:load />
+    <ProductCardsList client:load />
+  </StorefrontContainer>
+</NationalCodingDayLayout>

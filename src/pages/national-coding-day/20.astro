@@ -1,0 +1,21 @@
+---
+import designSystemSrc from "../../assets/design-system.png";
+import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+import AstroImage from "../../shared/components/AstroImage.astro";
+---
+
+<NationalCodingDayLayout
+  page={20}
+  title="Enable Tree Shaking Configuration"
+  subTitle="Design system"
+  class="min-h-screen h-full"
+>
+  <div class="flex w-full justify-center">
+    <AstroImage
+      src={designSystemSrc}
+      width={500}
+      height={550}
+      alt="design-system"
+    />
+  </div>
+</NationalCodingDayLayout>

@@ -1,28 +1,25 @@
 ---
-import { MiniCartLazy } from "../../modules/national-coding-day/e-commerce/MiniCartLazy";
-import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
-import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
+import { Content as LodashDirectImport } from "../../markdown/national-coding-day/lodash-solution-direct.md";
+import { Content as LodasESM } from "../../markdown/national-coding-day/lodash-solution-esm.md";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
-
-const PAGE_10_INSTRUCTION = {
-  title:
-    "Since cart module does not need to be display soon as users land on the page, we can load it upon users' click event instead, observe the changes by following the steps below.",
-  steps: [
-    "Repeat the previous step",
-    "Notice that there is no flasing of content",
-    "Observe the resources being loaded initially",
-    "Click cart, and now you can see the cart resource is only loaded upon first cart clicking",
-  ],
-};
+import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
 ---
 
 <NationalCodingDayLayout
   page={10}
-  title="Code Splitting #1"
-  subTitle="The solution"
+  title="Fixing 3rd party packages"
+  subTitle="Lodash: The Solution"
 >
-  <StorefrontContainer instruction={PAGE_10_INSTRUCTION} client:load>
-    <MiniCartLazy client:load />
-    <ProductCardsList client:load />
-  </StorefrontContainer>
+  <MDCodeBlockStyle>
+    <div class="flex w-full h-full justify-around items-center flex-wrap">
+      <div class="flex flex-col gap-1">
+        <LodashDirectImport />
+        <div class="text-white text-xl text-center">Direct import</div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <LodasESM />
+        <div class="text-white text-xl text-center">Lodash ES module</div>
+      </div>
+    </div>
+  </MDCodeBlockStyle>
 </NationalCodingDayLayout>

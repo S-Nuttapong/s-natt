@@ -1,22 +1,23 @@
 ---
-import { Content } from "../../markdown/national-coding-day/lodash-problem.md";
+import JsShippedSrc from "../../assets/js-shipped.png";
+import { Content } from "../../markdown/national-coding-day/javascriptGrowthByTwoTimes.md";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
-import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
+import AstroImage from "../../shared/components/AstroImage.astro";
+import MDTextStyle from "../../shared/components/MDTextStyle.astro";
 ---
 
-<NationalCodingDayLayout
-  page={4}
-  next="4.1"
-  title="Fixing 3rd party packages import"
-  subTitle="Lodash: The Problem"
->
-  <div class="flex flex-col gap-3 w-full h-full justify-center items-center">
-    <MDCodeBlockStyle>
-      <Content />
-    </MDCodeBlockStyle>
-    <div class="text-white text-l text-center">
-      Named import in Lodash, whose files are re-exported in CJS, which can't be
-      staticly analyzed by bundler
+<NationalCodingDayLayout page={4} title="Cost of javascript">
+  <MDTextStyle>
+    <div class="h-full flex flex-col justify-center items-center gap-4">
+      <AstroImage
+        src={JsShippedSrc}
+        width={1000}
+        height={500}
+        alt="JS-Shipped"
+      />
+      <MDTextStyle>
+        <Content />
+      </MDTextStyle>
     </div>
-  </div>
+  </MDTextStyle>
 </NationalCodingDayLayout>

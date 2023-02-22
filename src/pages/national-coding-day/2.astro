@@ -1,16 +1,21 @@
 ---
-import imageSrc from "../../assets/current-ui-lib-state.png";
+import businessPosSrc from "../../assets/business-positive-impact.webp";
+import { Content } from "../../markdown/national-coding-day/web-vitals-and-business.md";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
 import AstroImage from "../../shared/components/AstroImage.astro";
+import MDTextStyle from "../../shared/components/MDTextStyle.astro";
 ---
 
-<NationalCodingDayLayout
-  page={2}
-  prev="1.4"
-  title="Current State of FE Framework"
-  subTitle="Most commonly used these days"
->
-  <div class="flex w-full justify-center">
-    <AstroImage src={imageSrc} width={716} height={483} alt="logo" />
+<NationalCodingDayLayout page={2} title="Improve Core Web Vitals = Improve Sales">
+  <div class="flex flex-col h-full w-full justify-center items-center gap-3">
+    <AstroImage
+      src={businessPosSrc}
+      width={800}
+      height={400}
+      alt="core-web-business-impact"
+    />
+    <MDTextStyle>
+      <Content />
+    </MDTextStyle>
   </div>
 </NationalCodingDayLayout>

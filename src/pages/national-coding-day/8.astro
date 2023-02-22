@@ -1,15 +1,21 @@
 ---
-import momentJSAlternativeSrc from "../../assets/moment-js-alternative.webp";
+import { Content } from "../../markdown/national-coding-day/lodash-problem.md";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
-import AstroImage from "../../shared/components/AstroImage.astro";
+import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
 ---
 
 <NationalCodingDayLayout
   page={8}
-  title="Removing/Replacing 3rd party"
-  subTitle="Moment.js"
+  title="Fixing 3rd party packages import"
+  subTitle="Lodash: The Problem"
 >
-  <div class="flex w-full h-full justify-center items-center">
-    <AstroImage src={momentJSAlternativeSrc} width={1800} height={450} alt="Moment.js Bundle Phobia"/>
+  <div class="flex flex-col gap-3 w-full h-full justify-center items-center">
+    <MDCodeBlockStyle>
+      <Content />
+    </MDCodeBlockStyle>
+    <div class="text-white text-l text-center">
+      Named import in Lodash, whose files are re-exported in CJS, which can't be
+      staticly analyzed by bundler
+    </div>
   </div>
 </NationalCodingDayLayout>

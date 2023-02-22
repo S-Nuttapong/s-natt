@@ -1,64 +1,35 @@
 ---
-import CodegenFlowChart from '../../modules/national-coding-day/codegen/CodegenFlowChart';
-import { HowItWorks } from '../../modules/national-coding-day/e-commerce/HowItWorks';
-import NationalCodingDayLayout from '../../modules/national-coding-day/NationalCodingDayLayout.astro';
+import BloatedEcom from "../../modules/national-coding-day/e-commerce/BloatedEcom";
+import { MiniCart } from "../../modules/national-coding-day/e-commerce/MiniCart";
+import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
+import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
+import { YouMayLikeSection } from "../../modules/national-coding-day/e-commerce/YouMayLikeSection";
+import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
 
 const PAGE_12_INSTRUCTION = {
   title:
-    `This case study compares the product page's bundle shipped to browser between unmodular codegen, aka the dumping ground and modular codegen, observe the difference by following the steps below.`,
+    "Since users won't see this very last sections right away, we can load it once users scroll to it's section, this can be achieve using intersection observer API, observe the changes by following the steps below.",
   steps: [
-    'wire "generate.tsx" to product page box by click the  handle (the vertical teal bar)',
-    'Observe how much bundle size shipped to the browser in kb at the top of the product page box',
-    'Unwire the "generate.tsx" and product page by pressing the "deleting" on keyboard',
-    'Wire "generate.tsx" to the left of "mod-gen", and wire the "index.ts" to the product page box',
-    'Observe how much bundle size shipped to the browser in kb at the top of the product page box',
-    `You may notice that the bundle size is now shipped 100 times less than the first way, that's because bundler now can statically analyze which export is being used`,
+    "Repeat the previous step",
+    "Notice that there is no flasing of content",
+    "Observe the resources being loaded initially",
+    "Scroll down until you see the 'you may also like' section and now you can see the cart resource is only loaded upon first cart clicking",
   ],
 };
 ---
 
-<style is:global>
-  pre {
-    background: #151718;
-    font-size: large;
-    border-radius: 10px;
-    padding: 40px;
-    max-width: 50%;
-    min-width: 500px;
-    overflow-y: scroll;
-  }
-  pre > code {
-    display: grid;
-    row-gap: 10px;
-  }
-
-  code {
-    counter-reset: step;
-    counter-increment: step 0;
-  }
-
-  code .line::before {
-    content: counter(step);
-    counter-increment: step;
-    width: fit-content;
-    margin-right: 1.5rem;
-    display: inline-block;
-    text-align: right;
-    color: rgba(115, 138, 148, 0.4);
-  }
-</style>
-
 <NationalCodingDayLayout
   page={18}
-  title='Tree-shakeable modules'
-  subTitle='Codegen'
+  title="Code Splitting #2"
+  subTitle="The Solution"
 >
-  <div
-    class='flex flex-col w-full h-full justify-center overflow-hidden relative'
-  >
-    <div class='flex w-full h-full justify-end items-start'>
-      <HowItWorks instruction={PAGE_12_INSTRUCTION} client:only />
+  <StorefrontContainer instruction={PAGE_12_INSTRUCTION} client:load>
+    <MiniCart client:load />
+    <div class="w-full h-full overflow-scroll">
+      <ProductCardsList row={2} client:load />
+      <YouMayLikeSection client:only>
+        <BloatedEcom client:visible />
+      </YouMayLikeSection>
     </div>
-    <CodegenFlowChart client:only />
-  </div>
+  </StorefrontContainer>
 </NationalCodingDayLayout>

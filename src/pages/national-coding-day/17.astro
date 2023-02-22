@@ -1,45 +1,36 @@
 ---
-import { Content } from "../../markdown/national-coding-day/codegen.md";
+import BloatedEcom from "../../modules/national-coding-day/e-commerce/BloatedEcom";
+import { MiniCart } from "../../modules/national-coding-day/e-commerce/MiniCart";
+import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
+import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
+import { YouMayLikeSection } from "../../modules/national-coding-day/e-commerce/YouMayLikeSection";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
+
+const PAGE_11_INSTRUCTION = {
+  title:
+    "This case study illustrates the problem where we ship the bloated 'other products you may also like' section to the browser, to understand the problem follow the steps below.",
+  steps: [
+    "Open browser inspector",
+    "Emulate the CPU and Network, ideally keep the network speed and throttle CPU",
+    "If it's not possible, you can try fast 3G to begin with",
+    "Reload and observe how storefront is being paint, you may notice flasing of content",
+    "Observe the resource being loaded, you may notice ",
+  ],
+};
 ---
-
-<style is:global>
-  pre {
-    background: #151718;
-    font-size: large;
-    border-radius: 10px;
-    padding: 40px;
-    max-width: 50%;
-    min-width: 500px;
-    overflow-y: scroll;
-  }
-  pre > code {
-    display: grid;
-    row-gap: 10px;
-  }
-  
-  code {
-    counter-reset: step;
-    counter-increment: step 0;
-  }
-
-  code .line::before {
-    content: counter(step);
-    counter-increment: step;
-    width: fit-content;
-    margin-right: 1.5rem;
-    display: inline-block;
-    text-align: right;
-    color: rgba(115, 138, 148, 0.4);
-  }
-</style>
 
 <NationalCodingDayLayout
   page={17}
-  title="Tree-shakeable modules"
-  subTitle="Codegen"
+  title="Code Splitting #2"
+  subTitle="The Problem"
 >
-  <div class="flex w-full justify-center overflow-hidden">
-    <Content />
-  </div>
+  <StorefrontContainer instruction={PAGE_11_INSTRUCTION} client:load>
+    <MiniCart client:load />
+    <div class="w-full h-full overflow-scroll">
+      <ProductCardsList row={2} client:only />
+      <YouMayLikeSection client:only>
+        <BloatedEcom client:only />
+      </YouMayLikeSection>
+    </div>
+  </StorefrontContainer>
 </NationalCodingDayLayout>

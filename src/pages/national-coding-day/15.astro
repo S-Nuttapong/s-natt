@@ -1,32 +1,29 @@
 ---
-import { Content } from "../../markdown/national-coding-day/design-system-nx-config.md";
+import { MiniCartBloated } from "../../modules/national-coding-day/e-commerce/MiniCartBloated";
+import { ProductCardsList } from "../../modules/national-coding-day/e-commerce/ProductCardsList";
+import { StorefrontContainer } from "../../modules/national-coding-day/e-commerce/StorefrontContainer";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
-import MDCodeBlockStyle from "../../shared/components/MDCodeBlockStyle.astro";
+
+const PAGE_9_INSTRUCTION = {
+  title:
+    "This case study illustrates the problem where we ship the bloated cart module to the browser, to understand the problem follow the steps below.",
+  steps: [
+    "Open browser inspector",
+    "Emulate the CPU and Network, ideally keep the network speed and throttle CPU",
+    "If it's not possible, you can try fast 3G to begin with",
+    "Reload and observe how storefront is being paint, you may notice flasing of content",
+    "Observe the resource being loaded, you may notice ",
+  ],
+};
 ---
 
 <NationalCodingDayLayout
   page={15}
-  title="Enable Tree Shaking Configuration"
-  subTitle="Design system"
+  title="Code Splitting #1"
+  subTitle="Bloated Cart: The problem"
 >
-  <div class="flex w-full h-full justify-around items-center flex-wrap-reverse">
-    <div class="flex flex-col gap-6">
-      <h2 class="text-white text-4xl w-[20ch]">
-        Tree shakeable module rule of thumb:
-      </h2>
-      <ul
-        class="text-white text-4xl flex flex-col justify-start align-top gap-6 list-disc list-inside"
-      >
-        <li class="text-inherit">ESM export</li>
-        <li class="text-inherit">Modularized export</li>
-        <li class="text-inherit">Configurations</li>
-      </ul>
-    </div>
-    <div class="flex flex-col gap-6">
-      <h2 class="text-white text-4xl">Nx config example:</h2>
-      <MDCodeBlockStyle>
-        <Content />
-      </MDCodeBlockStyle>
-    </div>
-  </div>
+  <StorefrontContainer instruction={PAGE_9_INSTRUCTION} client:load>
+    <MiniCartBloated client:only />
+    <ProductCardsList client:only />
+  </StorefrontContainer>
 </NationalCodingDayLayout>

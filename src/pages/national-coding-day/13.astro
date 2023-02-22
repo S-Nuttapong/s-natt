@@ -1,11 +1,15 @@
 ---
+import momentBundlePhobiaSrc from "../../assets/moment-js-bundle-phobia.webp";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
-
+import AstroImage from "../../shared/components/AstroImage.astro";
 ---
 
 <NationalCodingDayLayout
   page={13}
-  type="header"
-  title="Enable Tree Shaking Configuration"
-  subTitle="Design system"
-/>
+  title="Removing/Replacing 3rd party"
+  subTitle="Moment.js"
+>
+  <div class="flex w-full h-full justify-center items-center">
+    <AstroImage src={momentBundlePhobiaSrc} width={1200} height={540} alt="Moment.js Bundle Phobia"/>
+  </div>
+</NationalCodingDayLayout>

@@ -1,21 +1,15 @@
 ---
-import designSystemSrc from "../../assets/design-system.png";
+import momentJSAlternativeSrc from "../../assets/moment-js-alternative.webp";
 import NationalCodingDayLayout from "../../modules/national-coding-day/NationalCodingDayLayout.astro";
 import AstroImage from "../../shared/components/AstroImage.astro";
 ---
 
 <NationalCodingDayLayout
   page={14}
-  title="Enable Tree Shaking Configuration"
-  subTitle="Design system"
-  class="min-h-screen h-full"
+  title="Removing/Replacing 3rd party"
+  subTitle="Moment.js"
 >
-  <div class="flex w-full justify-center">
-    <AstroImage
-      src={designSystemSrc}
-      width={500}
-      height={550}
-      alt="design-system"
-    />
+  <div class="flex w-full h-full justify-center items-center">
+    <AstroImage src={momentJSAlternativeSrc} width={1800} height={450} alt="Moment.js Bundle Phobia"/>
   </div>
 </NationalCodingDayLayout>

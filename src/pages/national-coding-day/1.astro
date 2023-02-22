@@ -3,10 +3,32 @@ import NationalCodingDayLayout from "../../modules/national-coding-day/NationalC
 ---
 
 <NationalCodingDayLayout
-  isFirstPage
   page={1}
-  next='1.1'
-  type="header"
-  title="Web performance in UI framework era"
-  subTitle="Building without bloated"
-/>
+  prev=""
+  title="Web Performance Impact on Busniess"
+>
+  <div class="flex flex-col h-full w-full justify-center items-center">
+    <div>
+      <div class="flex gap-2 text-white text-5xl mb-6 flex-wrap">
+        <div class="text-inherit text-yellow-300 underline">
+          <a href="https://www.akamai.com/newsroom/press-release">Akamai-led</a>
+        </div>
+        <div class="text-inherti">research says:</div>
+      </div>
+      <ul
+        class="text-white text-3xl flex flex-col justify-start align-top gap-6 list-disc list-inside"
+      >
+        <li class="text-inherit">
+          47% of visitors expect load times under two seconds
+        </li>
+        <li class="text-inherit">
+          40% will abandon pages that takes longer than 3 seconds to load
+        </li>
+        <li class="text-inherit">
+          64% of dissatisfied visitors will look elsewhere next time
+        </li>
+        <li class="text-inherit">list go on</li>
+      </ul>
+    </div>
+  </div>
+</NationalCodingDayLayout>
