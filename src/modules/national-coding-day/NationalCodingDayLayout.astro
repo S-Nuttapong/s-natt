@@ -83,7 +83,13 @@ const prevPage = addBasedPath(prev);
       <slot />
       {
         resource && (
-          <a href={resource} target="_blank" class="w-full text-white text-xs text-end hover:cursor-pointer hover:text-yellow-300">{resource}</a>
+          <a
+            href={resource}
+            target="_blank"
+            class="w-full text-white text-xs text-end hover:cursor-pointer hover:text-yellow-300"
+          >
+            {resource}
+          </a>
         )
       }
       <nav class="flex justify-center mt-4">
@@ -99,7 +105,10 @@ const prevPage = addBasedPath(prev);
               }`}
             />
           </a>
-          <a href={nextPage} class="text-white">
+          <a
+            href={nextPage}
+            class={`text-white ${isLastPage ? "pointer-events-none" : ""}`}
+          >
             <Icon
               name="charm:chevron-right"
               class={`text-gray-500 fill-current w-20 ${
